@@ -23,12 +23,51 @@
   background-color: #e3db94;
   overflow: visible;  /* don’t hide content */
 }
+  .tagline-section {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  max-width: 450px;
+  color: white;
+  font-family: Arial, sans-serif;
+  z-index: 20;
+}
+
+.tagline-section h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.tagline-section p {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 20px;
+  color: #f7f7f1;
+}
+
+.cta-btn {
+  padding: 8px 25px;
+  font-size: 18px;
+  background-color: #fac30d;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #89a037;
+}
+
 
   /* Sun */
   .sun {
     position: absolute;
-    top: 100px;
-    left: 50%;
+    top: 130px;
+    left: 46%;
     transform: translateX(-50%);
     width: 1366px;
     height: auto;
@@ -38,8 +77,8 @@
   /* Clouds */
   .cloud {
     position: absolute;
-    top: 210px; /* just below sun */
-    left: 50%;
+    top: 215px; /* just below sun */
+    left: 46%;
     transform: translateX(-50%);
     width: 1366px;
     height: auto;
@@ -83,17 +122,185 @@
   }
   .elephant {
   position: absolute;
-  top: 600px;     /* keep near the ground */
+  top: 590px;     /* keep near the ground */
   left: -40px;     /* move inside from left */
   width: 900px;   /* BIG elephant */
   height: auto;
   z-index: 7;     /* above ground */
+}
+.ground {
+  position: absolute;
+  top: 1010px;       /* start just above river */
+  left: 0;
+  width: 100%;
+  height: 230px;    /* tall enough to cover behind river + stone */
+  background-color: #056906;  /* green shade */
+  z-index: 5;       /* behind river & stone, but above bg */
+}
+.river {
+  position: absolute;
+  top: 710px;      /* align with elephant */
+  left: -10px;     /* just after elephant (900px wide + 50px left) */
+  width: 1366px;    /* size of river */
+  height: auto;
+  z-index: 6;      /* slightly behind elephant */
+}
+
+.stone {
+  position: absolute;
+  top: 790px;      /* align with river bottom */
+  left: 370px;    /* just after river ends */
+  width: 800px;    /* adjust stone size */
+  height: auto;
+  z-index: 7;      /* above river */
+}
+.grass {
+  position: absolute;
+  top: 860px;     /* just below elephant */
+  left:130px;        /* start from left side */
+  width: 728px;  /* match scene width, or set actual grass.png width */
+  height: auto;
+  z-index: 8;     /* behind elephant */
+}
+.grass1 {
+  position: absolute;
+  top: 860px;     /* just below elephant */
+  left:0px;        /* start from left side */
+  width: 247px;  /* match scene width, or set actual grass.png width */
+  height: auto;
+  z-index: 7;     /* behind elephant */
+}
+.grass2 {
+  position: absolute;
+  top: 850px;     /* just below elephant */
+  right:-210px;        /* start from left side */
+  width: 728px;  /* match scene width, or set actual grass.png width */
+  height: auto;
+  z-index: 8;     /* behind elephant */
+}
+.blue-river {
+  position: absolute;
+  top: 1240px;       /* start just above river */
+  left: 0;
+  width: 100%;
+  height: 900px;    /* tall enough to cover behind river + stone */
+  background-color: #91f3ff;  /* green shade */
+  z-index: 5;        /* above ground but below elephant if needed */
+}
+.boat {
+  position: absolute;
+  top: 1250px;      /* a little above river so it looks like floating */
+  right: 150px;     /* adjust position to where you want it on river */
+  width: 376px;    /* resize boat */
+  height: auto;
+  z-index: 8;      /* above river */
+}
+.info-section {
+  position: absolute;
+  top: 1500px;   /* adjust vertical placement */
+  left: 200px;   /* horizontal offset */
+  display: flex; /* puts boxes and text side by side */
+  gap: 40px;     /* space between boxes and text */
+  align-items: flex-start; /* align text with top of boxes */
+  z-index: 20;
+}
+
+.info-boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns */
+  gap: 20px;
+}
+
+.info-box {
+  width: 220px;
+  height: 160px;
+  border-radius: 10px;
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  font-weight: bold;
+}
+
+/* Four different colors */
+.info-box:nth-child(1) { background: rgba(255, 99, 71, 0.8); }
+.info-box:nth-child(2) { background: rgba(60, 179, 113, 0.8); }
+.info-box:nth-child(3) { background: rgba(30, 144, 255, 0.8); }
+.info-box:nth-child(4) { background: rgba(255, 165, 0, 0.8); }
+
+.info-text {
+  top: 100px;
+  max-width: 300px;
+  color: #2b2b2b;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.info-text h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.info-text p {
+  font-size: 18px;
+  text-align: justify;
+}
+
+.wave {
+    position: absolute;
+    top: 1500px; /* just below cloud */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1366px;
+    height: auto;
+    z-index: 6;
+  }
+  .blue-ocean{
+  position: absolute;
+  top: 2100px;       /* start just above river */
+  left: 0;
+  width: 100%;
+  height: 800px;    /* tall enough to cover behind river + stone */
+  background-color: #4187dc;  /* green shade */
+  z-index: 5;        /* above ground but below elephant if needed */
+}
+.diver {
+  position: absolute;
+  top: 2150px;   /* adjust vertical position inside ocean */
+  left: 100px;   /* adjust horizontal position */
+  width: 413px;  /* size of the diver */
+  height: auto;
+  z-index: 7;    /* above ocean, below anything you want in front */
+}
+.bubble {
+  position: absolute;
+  top: 2250px;   /* adjust vertical position inside ocean */
+  left: 300px;   /* adjust horizontal position */
+  width: 100px;  /* size of the diver */
+  height: auto;
+  z-index: 7;    /* above ocean, below anything you want in front */
+}
+.jelly {
+  position: absolute;
+  top: 2500px;   /* adjust vertical position inside ocean */
+  right: 30px;   /* adjust horizontal position */
+  width: 400px;  /* size of the diver */
+  height: auto;
+  z-index: 7;    /* above ocean, below anything you want in front */
 }
 </style>
 </head>
 <body>
 
 <div class="bg">
+  <div class="tagline-section">
+  <h1>CODE SAFARI</h1>
+  <p>Where Learning <br>is a Wild Adventure.</p>
+  <button class="cta-btn">Code with Us</button>
+</div>
   <img src="images/sun.png" alt="Sun" class="sun">
   <img src="images/cloud.png" alt="Cloud" class="cloud">
   <img src="images/bush.png" alt="Bush" class="bush">
@@ -101,8 +308,35 @@
   <img src="images/right_tree.png" alt="Tree Right" class="tree-right">
   <img src="images/monkey.png" alt="Monkey" class="monkey"> 
   <img src="images/elephant.png" alt="Elephant" class="elephant">
+  <div class="ground"></div>
+  <img src="images/grass.png" alt="Grass" class="grass">
+  <img src="images/grass1.png" alt="Grass1" class="grass1">
+  <img src="images/grass.png" alt="Grass" class="grass2">
+  <img src="images/river1.png" alt="River" class="river">
+  <img src="images/stone.png" alt="Stone" class="stone">
+  <div class="blue-river"></div>
+  <img src="images/boat.png" alt="Boat" class="boat">
 </div>
 </div>
+<div class="info-section">
+  <div class="info-boxes">
+    <div class="info-box">HTML </div>
+    <div class="info-box">JavaScript</div>
+    <div class="info-box">CSS</div>
+    <div class="info-box">Projects</div>
+  </div>
+
+  <div class="info-text">
+    <h2>Code Like a <br>Wild Explorer!</h2>
+    <p>Embark on a thrilling coding adventure where every lesson is a new discovery. Learn HTML, CSS, JavaScript, and more through step-by-step guidance, and a fun, interactive jungle-themed experience. Grow at your own pace and turn your curiosity into real coding skills!</p>
+  </div>
+</div>
+<img src="images/wave.png" alt="Wave" class="wave">
+<div class="blue-ocean"></div>
+<img src="images/diver.png" alt="Wave" class="diver">
+<img src="images/bubble.png" alt="Wave" class="bubble">
+<img src="images/jellyfish.png" alt="Wave" class="jelly">
+
 
 </body>
 </html>
