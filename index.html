@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Safari</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+
+  .bg {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;  /* allow it to be taller than screen */
+  background-color: #e3db94;
+  overflow: visible;  /* don’t hide content */
+}
+
+  /* Sun */
+  .sun {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1366px;
+    height: auto;
+    z-index: 1;
+  }
+
+  /* Clouds */
+  .cloud {
+    position: absolute;
+    top: 210px; /* just below sun */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1366px;
+    height: auto;
+    z-index: 2;
+  }
+
+  /* Bushes */
+  .bush {
+    position: absolute;
+    top: 280px; /* just below cloud */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1366px;
+    height: auto;
+    z-index: 3;
+  }
+  .treewithbush {
+    position: absolute;
+    top: -520px; /* below main bush */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1366px;
+    height: auto;
+    z-index: 4;
+  }
+  .tree-right {
+    position: absolute;
+    top: 0px;        /* adjust to align with monkey area */
+    right: -60px;       /* stick to the right */
+    width: 400px;      /* smaller than full image */
+    height: auto;
+    z-index: 5;
+  }
+  .monkey {
+    position: absolute;
+    top: 240px;       /* adjust to hang below tree */
+    right: 80px;     /* keep close to tree */
+    width: 200px;     /* smaller size */
+    height: auto;
+    z-index: 6;       /* above tree */
+  }
+  .elephant {
+  position: absolute;
+  top: 600px;     /* keep near the ground */
+  left: -40px;     /* move inside from left */
+  width: 900px;   /* BIG elephant */
+  height: auto;
+  z-index: 7;     /* above ground */
+}
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <img src="images/sun.png" alt="Sun" class="sun">
+  <img src="images/cloud.png" alt="Cloud" class="cloud">
+  <img src="images/bush.png" alt="Bush" class="bush">
+  <img src="images/treewithbush.png" alt="Tree with Bush" class="treewithbush">
+  <img src="images/right_tree.png" alt="Tree Right" class="tree-right">
+  <img src="images/monkey.png" alt="Monkey" class="monkey"> 
+  <img src="images/elephant.png" alt="Elephant" class="elephant">
+</div>
+</div>
+
+</body>
+</html>
