@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - CodeSafari</title>
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      margin: 0;
+      padding: 0;
+      background: url("../images/bg.png") no-repeat center center fixed;
+      background-size: cover;
+      color: #2e2e2e;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #2e5d34;
+      text-shadow: 2px 2px #fff;
+    }
+
+    /* About Us */
+    .about {
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.85);
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .about h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #2e5d34;
+    }
+    .about p {
+      font-size: 1.2rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    
+
+    /* Mission + Jeep */
+    .mission {
+      position: relative;
+  padding: 50px 50px 70px; /* extra bottom padding for grass */
+  margin: 0;
+  background: rgba(255, 255, 255, 0.85);
+  overflow: visible; /* allow jeep to move outside */
+    }
+    .mission h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #1d4d2c;
+    }
+    .mission p {
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .lion-mission {
+  position: absolute;
+  top: 20px;     /* move to top */
+  left: 20px;    /* align to left */
+  width: 150px;  /* make smaller */
+  height: auto;
+  z-index: 1;
+}
+    
+.grass-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px; /* adjust height */
+  background: url("../images/grass.png") repeat-x;
+  background-size: contain;
+  z-index: 0; /* behind text */
+}
+    .jeep {
+      position: absolute;
+  bottom: 20px;       /* slightly above grass */
+  right: -200px;
+  width: 300px;
+  animation: drive 10s linear infinite;
+  z-index: 2;          /* in front of grass and text */
+     
+    }
+    @keyframes drive {
+      from { right: -250px; }
+      to { right: 110%; }
+    }
+
+
+    /* Team */
+    .team {
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0 50px 50px;   /* remove top padding, keep bottom */
+     position: relative;
+    }
+    .team h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      color: #2e5d34;
+    }
+    .members {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .member {
+      background: #e8f5e9;
+      padding: 20px;
+      border-radius: 15px;
+      width: 220px;
+      margin: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #2e5d34;
+    }
+    .member h3 {
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+      color: #1d4d2c;
+    }
+    .member p {
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>🌿 Welcome to CodeSafari — Where Coding Becomes an Adventure! 🌿</h1>
+  </section>
+
+  <!-- About -->
+<section class="about">
+  <h2>About Us</h2>
+  <p>
+    At CodeSafari, we believe learning to code should feel like exploring a jungle full of hidden treasures. 
+    Instead of dull lessons, we guide kids through exciting adventures where every tag, every line of code,
+    is like discovering a new animal or plant in the wild. 
+    Our mission is simple: make HTML learning playful, creative, and unforgettable for curious young explorers.
+  </p>
+</section>
+
+
+  <!-- Mission -->
+<section class="mission">
+  <h2>Our Mission</h2>
+  <p>
+    Our mission is to take children on an adventurous journey into the world of coding. 
+    With interactive lessons, colorful challenges, and a supportive team of guides, 
+    we transform learning HTML into a safari filled with curiosity, courage, and creativity.
+  </p>
+  <img src="../images/lion.jpg" alt="Lion in Safari" class="lion-mission">
+  <img src="../images/jeep.png" alt="Safari Jeep" class="jeep">
+
+  <!-- Grass Divider -->
+    <div class="grass-bottom">
+    </div>
+
+</section>
+
+
+</body>
+</html>
