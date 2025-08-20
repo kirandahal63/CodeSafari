@@ -189,7 +189,7 @@
 }
 .boat {
   position: absolute;
-  top: 1250px;      /* a little above river so it looks like floating */
+  top: 1150px;      /* a little above river so it looks like floating */
   right: 150px;     /* adjust position to where you want it on river */
   width: 376px;    /* resize boat */
   height: auto;
@@ -197,7 +197,7 @@
 }
 .info-section {
   position: absolute;
-  top: 1500px;   /* adjust vertical placement */
+  top: 1400px;   /* adjust vertical placement */
   left: 200px;   /* horizontal offset */
   display: flex; /* puts boxes and text side by side */
   gap: 40px;     /* space between boxes and text */
@@ -251,7 +251,7 @@
 
 .wave {
     position: absolute;
-    top: 1500px; /* just below cloud */
+    top: 1350px; /* just below cloud */
     left: 50%;
     transform: translateX(-50%);
     width: 1366px;
@@ -263,34 +263,114 @@
   top: 2100px;       /* start just above river */
   left: 0;
   width: 100%;
-  height: 800px;    /* tall enough to cover behind river + stone */
+  height: 700px;    /* tall enough to cover behind river + stone */
   background-color: #4187dc;  /* green shade */
   z-index: 5;        /* above ground but below elephant if needed */
 }
 .diver {
   position: absolute;
-  top: 2150px;   /* adjust vertical position inside ocean */
-  left: 100px;   /* adjust horizontal position */
+  top: 1850px;   /* adjust vertical position inside ocean */
+  left: 40px;   /* adjust horizontal position */
   width: 413px;  /* size of the diver */
   height: auto;
   z-index: 7;    /* above ocean, below anything you want in front */
 }
 .bubble {
   position: absolute;
-  top: 2250px;   /* adjust vertical position inside ocean */
-  left: 300px;   /* adjust horizontal position */
+  top: 1950px;   /* adjust vertical position inside ocean */
+  left: 220px;   /* adjust horizontal position */
   width: 100px;  /* size of the diver */
   height: auto;
   z-index: 7;    /* above ocean, below anything you want in front */
 }
 .jelly {
   position: absolute;
-  top: 2500px;   /* adjust vertical position inside ocean */
+  top: 1900px;   /* adjust vertical position inside ocean */
   right: 30px;   /* adjust horizontal position */
-  width: 400px;  /* size of the diver */
+  width: 300px;  /* size of the diver */
   height: auto;
   z-index: 7;    /* above ocean, below anything you want in front */
 }
+.portfolio-section {
+  top: 1600px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+  position: relative;  
+  z-index: 20;      
+}
+.portfolio-box {
+  width: 230px;
+  height: 280px;
+  border-radius: 12px;
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:lighter;
+  text-align: center;
+}
+
+/* 5 different colors */
+.portfolio-box:nth-child(1) { background: rgba(255, 99, 71, 0.9); }   /* Red */
+.portfolio-box:nth-child(2) { background: rgba(60, 179, 113, 0.9); }  /* Green */
+.portfolio-box:nth-child(3) { background: rgba(0, 0, 0, 0.9); }  /* Blue */
+.portfolio-box:nth-child(4) { background: rgba(255, 165, 0, 0.9); }   /* Orange */
+.portfolio-box:nth-child(5) { background: rgba(186, 85, 211, 0.9); }  /* Purple */
+.member-card {
+  position: relative;
+  top: -40px;
+  width: 170px;
+  height: 90px; /* height of the card container */
+  border-radius: 12px;
+  overflow: visible; /* allow image to go outside */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.member-card img {
+  width: 100%;
+  height: 120px; /* taller than container */
+  object-fit: cover;
+  display: block;
+  position: relative;
+  top: -30px; /* shift image up */
+  border-radius: 12px 12px 0 0;
+}
+
+.member-name {
+  position: absolute;
+  bottom: -15px;   /* push up a bit from bottom */
+  left: -20px;     /* stick to left side */
+  width: 80%;     /* half of the image width */
+  background: rgba(36, 35, 35, 0.932);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.member-info {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.member-info h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-align: left;
+  color: #fffdfd;
+}
+
+.member-info p {
+  font-size: 13px;
+  margin: 2px 0;
+  color: #fffbfb;
+  text-align: justify;
+}
+
+
 </style>
 </head>
 <body>
@@ -336,6 +416,59 @@
 <img src="images/diver.png" alt="Wave" class="diver">
 <img src="images/bubble.png" alt="Wave" class="bubble">
 <img src="images/jellyfish.png" alt="Wave" class="jelly">
+
+<div class="portfolio-section">
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/kiran.jpg" alt="Member Photo">
+      <div class="member-name">Kiran</div>
+        <div class="member-info">
+          <h3>CEO</h3>
+          <p>Brings ideas to life with his imagination and design skills. He ensures every coding adventure feels exciting and playful.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/kesang.jpg" alt="Member Photo">
+      <div class="member-name">Kesang</div>
+        <div class="member-info">
+          <h3>Lead Instructor</h3>
+          <p>She connects kids with interactive challenges. She makes sure every explorer feels confident and curious while coding.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/aditya.jpg" alt="Member Photo">
+      <div class="member-name">Aditya</div>
+        <div class="member-info">
+          <h3>CAO</h3>
+          <p>He Builds the tools and games behind CodeSafari. He ensures every lesson runs smoothly like an exciting jungle quest.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/kritika.jpg" alt="Member Photo">
+      <div class="member-name">Kritika</div>
+        <div class="member-info">
+          <h3>COO</h3>
+          <p>She makes coding simple and fun for kids. She loves turning complex tags into easy, memorable learning journeys.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/anwesha.jpg" alt="Member Photo">
+      <div class="member-name">Anwesha</div>
+        <div class="member-info">
+          <h3>Director</h3>
+          <p>She adds the storytelling magic to CodeSafari. He turns every coding lesson into a thrilling safari tale full of discovery.</p>
+        </div>
+    </div>
+  </div>
+</div>
 
 
 </body>
