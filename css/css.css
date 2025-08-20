@@ -1,0 +1,248 @@
+:root{
+  --leaf:#2D6A4F;
+  --sun:#FF9800;
+  --sky:#E0F7FA;
+  --paper:#fffdf8;
+  --ink:#333;
+  --right:#2ecc71;
+  --wrong:#e74c3c;
+  --bubble:"Baloo 2", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --quiz-bg-pos:center 50%;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  color:var(--ink);
+  background-color: var(--sky);
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+/* ===== TRANSPARENT HEADER (WELCOME ONLY) ===== */
+.site-header{
+  position:fixed; top:0; left:0; width:100%;
+  z-index:1500;
+  background:none; border:none; box-shadow:none;
+}
+.nav-bar{
+  max-width:1100px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 20px;
+}
+.logo{
+  font-family: var(--bubble); font-weight:700; font-size:20px;
+  color:#0f172a;
+  text-shadow:0 1px 2px rgba(255,255,255,.25);
+}
+.nav-links{ list-style:none; display:flex; gap:24px; margin:0; padding:0; }
+.nav-links a{
+  text-decoration:none; font-weight:700; color:#0f172a;
+  opacity:.9; transition:opacity .2s;
+}
+.nav-links a:hover{ opacity:1; }
+
+/* ===== FLYING BIRD ===== */
+.bird{
+  position:fixed; top:20px; left:-150px;
+  width:120px; height:auto; z-index:1600; opacity:.95;
+  animation: birdFly 14s linear infinite;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.2));
+  pointer-events:none;
+}
+@keyframes birdFly{
+  0%   { transform: translateX(0) translateY(0) rotate(-2deg) scale(1); }
+  10%  { transform: translateX(10vw) translateY(-12px) rotate(0deg) scale(1.02); }
+  25%  { transform: translateX(25vw) translateY(8px) rotate(2deg) scale(1.03); }
+  40%  { transform: translateX(40vw) translateY(-14px) rotate(0deg) scale(1.02); }
+  55%  { transform: translateX(55vw) translateY(10px) rotate(-2deg) scale(1.03); }
+  70%  { transform: translateX(70vw) translateY(-10px) rotate(2deg) scale(1.01); }
+  85%  { transform: translateX(90vw) translateY(6px) rotate(0deg) scale(1.02); }
+  100% { transform: translateX(115vw) translateY(0) rotate(-2deg) scale(1); }
+}
+
+/* ===== CONFETTI OVERLAY (always on top) ===== */
+#confettiLayer{
+  position:fixed;
+  inset:0;
+  z-index: 99999;
+  pointer-events: none;
+}
+@keyframes confettiFall{
+  to{ transform: translateY(105vh) rotate(540deg); opacity:.1; }
+}
+.confetti-piece{
+  position:absolute;
+  top:-12px;
+  width:10px; height:14px;
+  opacity:.9; border-radius:2px;
+  animation: confettiFall var(--dur, 3.5s) linear forwards;
+}
+
+/* ===== WELCOME (with HOVER “BREATHE”) ===== */
+.content{
+  display:flex; justify-content:center; align-items:center;
+  min-height:100dvh; flex-direction:column; text-align:center;
+  padding:20px; position:relative; overflow:hidden;
+  font-family: var(--bubble);
+}
+.content::before{
+  content:""; position:absolute; inset:0;
+  background:url('https://static.vecteezy.com/system/resources/previews/014/392/078/non_2x/cute-jungle-animals-in-cartoon-style-wild-animal-zoo-designs-for-background-illustration-vector.jpg')
+           center 88% / cover no-repeat;
+  transform: scale(1.02);
+  transition: transform .8s ease;
+  will-change: transform;
+}
+.content::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18));
+}
+.content:hover::before{ animation: breathe 4.5s ease-in-out infinite alternate; }
+@keyframes breathe{ 0%{transform:scale(1.02)} 100%{transform:scale(1.08)} }
+@media (prefers-reduced-motion: reduce){ .content:hover::before{ animation:none; transform: scale(1.03); } }
+
+.content > *{ position:relative; z-index:1; }
+.welcome-stack{ transform: translateY(-8vh); }
+@media (max-width:600px){ .welcome-stack{ transform: translateY(-5vh); } }
+
+.arch-title{ width:min(82vw, 620px); margin:0 auto 10px; }
+.arch-title svg{ display:block; width:100%; height:auto; }
+.arch-title text{
+  font-family: var(--bubble); font-weight:700;
+  font-size: clamp(36px,6.8vw,72px); letter-spacing:3px;
+  fill:#FFE082; filter: drop-shadow(0 4px 3px rgba(0,0,0,.25));
+}
+.content p{
+  margin:0; font-weight:600; color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,.35);
+  transform: translateY(-10px);
+  font-size: clamp(18px, 2.2vw, 26px);
+}
+.button{
+  background-color:#FFC857; color:#fff; border:none;
+  padding:14px 28px; margin-top:8px; cursor:pointer;
+  font-size:18px; font-weight:700; border-radius:999px;
+  transition:transform .1s, background-color .3s;
+  box-shadow:0 12px 24px rgba(0,0,0,.15);
+}
+.button:hover{ background-color:#F57C00; transform:translateY(-1px) }
+
+/* ===== QUIZ (with HOVER “BREATHE”) ===== */
+.quiz-wrap{
+  display:none; justify-content:center; align-items:center;
+  min-height:100dvh; position:relative; overflow:hidden; padding:24px 16px;
+}
+.quiz-wrap::before{
+  content:""; position:absolute; inset:0;
+  background:url('https://img.freepik.com/free-vector/watercolor-tropical-leaves-background_52683-64403.jpg?semt=ais_hybrid&w=740&q=80')
+    var(--quiz-bg-pos) / cover no-repeat;
+  z-index:0; transform: translateY(0) scale(1.02);
+  will-change: transform;
+  transition: transform 1s ease;
+}
+.quiz-wrap:hover::before{ animation: bgBreathe 6s ease-in-out infinite alternate; }
+@keyframes bgBreathe{ 0%{ transform: translateY(0) scale(1.02)} 100%{ transform: translateY(-10px) scale(1.07)} }
+@media (prefers-reduced-motion: reduce){ .quiz-wrap:hover::before{ animation:none; transform: scale(1.03); } }
+
+.quiz-wrap::after{
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(1200px 800px at 50% 50%, rgba(222,245,237,.55), rgba(222,245,237,.35) 40%, rgba(222,245,237,.25) 65%, rgba(222,245,237,0) 100%);
+  pointer-events:none; z-index:0;
+}
+
+.notebook{
+  width:min(1100px,96vw); background:var(--paper); border-radius:16px;
+  box-shadow:0 16px 34px rgba(0,0,0,.20); padding:26px 26px 32px;
+  position:relative; border:6px solid #c9a66b;
+  background-image: repeating-linear-gradient(#fffdf8,#fffdf8 34px,#e6f3ff 35px),
+                    linear-gradient(90deg, rgba(255,0,0,.18) 0 0);
+  z-index:1;
+}
+.notebook:before{
+  content:"HTML Jungle Quiz"; position:absolute; top:-18px; left:22px;
+  background:#8D6E63; color:#fff; padding:6px 10px; border-radius:8px; letter-spacing:.5px; font-weight:bold; font-size:14px;
+  box-shadow:0 6px 14px rgba(0,0,0,.2);
+}
+
+.intro{ display:flex; gap:10px; flex-wrap:wrap; margin:2px 0 12px; color:#1b5e20; font-weight:bold; }
+.intro .badge{ background:var(--leaf); color:#fff; padding:6px 10px; border-radius:999px; font-size:12px; }
+.intro .progress{ margin-left:auto; font-family:var(--bubble); color:#2e7d32 }
+
+.q{ display:none; background:#fff; border:2px dashed #cfd8dc; padding:22px; border-radius:14px; margin:18px 0; }
+.q.active{ display:block; }
+.q h4{ margin:0 0 12px; color:#2e7d32; font-family:var(--bubble) }
+.choices{ display:grid; gap:12px; }
+.choice{
+  display:flex; align-items:center; gap:10px; background:#f7fbf7; padding:12px 14px; border-radius:10px;
+  border:1px solid #dbe7dc; cursor:pointer; transition:box-shadow .2s;
+}
+.choice:hover{ box-shadow:0 2px 10px rgba(0,0,0,.06) }
+.choice input{ transform:scale(1.1) }
+
+.feedback{ display:none !important; }
+.q.correct{ border-color:var(--right); background:#f2fff7 }
+.q.wrong{ border-color:var(--wrong); background:#fff6f5 }
+
+.quiz-actions{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; margin-top:18px; }
+.btn{ background:var(--sun); color:#fff; border:none; padding:10px 16px; border-radius:10px; font-weight:bold; cursor:pointer; box-shadow:0 6px 14px rgba(0,0,0,.15); font-family:var(--bubble); }
+.btn.secondary{ background:#607D8B }
+.btn:active{ transform:translateY(1px) }
+
+.score{ margin-top:12px; font-size:22px; font-weight:bold; color:#1b5e20; display:none; text-align:center; }
+
+/* ===== Certificate (LOCAL image element) ===== */
+.certificate{
+  display:none; width:min(720px,95vw); aspect-ratio: 1 / 1; margin:18px auto 0;
+  position:relative; background: transparent;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.18));
+  z-index: 1;
+}
+.certificate #certBg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit: contain; pointer-events:none;
+}
+.certificate .text{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:72%; text-align:center; color:#2D6A4F; font-family:var(--bubble);
+  text-shadow:0 2px 6px rgba(255,255,255,.85); line-height:1.25;
+}
+.certificate .text h2{ margin:.15em 0; font-size:clamp(16px,2.2vw,22px) }
+.certificate .text h1{ margin:.1em 0 .2em; font-size:clamp(28px,4.4vw,44px) }
+.certificate .text h3{ margin:.1em 0; font-size:clamp(16px,2.2vw,20px); font-weight:700; }
+.certificate .text p { margin:.2em 0; font-size:clamp(14px,2vw,18px) }
+
+/* Controls */
+.cert-controls{ display:none; margin:10px auto 0; text-align:center; width:min(720px,95vw); }
+.cert-controls.show{ display:block; }
+.cert-controls input{
+  padding:10px 14px; border-radius:999px; border:2px solid #cfd8dc; outline:none;
+  font-size:16px; min-width:220px; margin-right:8px; font-family:var(--bubble);
+}
+.cert-controls .download{ background:#2ecc71; color:#fff; border:none; padding:10px 18px; border-radius:999px; font-weight:700; cursor:pointer; box-shadow:0 6px 14px rgba(0,0,0,.15); }
+
+/* Fireflies */
+.firefly{
+  position:absolute; width:6px; height:6px; border-radius:50%;
+  background: radial-gradient(#fff96a, #ffd700 40%, rgba(255,215,0,0) 70%);
+  filter:blur(.4px); animation:twinkle 3s ease-in-out infinite; opacity:.85; z-index:1;
+}
+@keyframes twinkle{ 0%,100%{ transform:translateY(0); opacity:.6 } 50%{ transform:translateY(-6px); opacity:1 } }
+
+/* ===== FOOTER (WELCOME ONLY) ===== */
+.site-footer{
+  position:fixed; bottom:0; left:0; width:100%;
+  text-align:center; padding:10px 0;
+  font-family: var(--bubble); font-size:14px; color:#0f172a;
+  z-index:1500; background:none; border:none; text-shadow:none;
+}
+
+@media (max-width:600px){
+  .notebook{ padding:18px }
+  .choice{ font-size:15px }
+  .cert-controls input{ min-width:160px; margin-bottom:8px }
+  .cert-controls .download{ display:inline-block; margin-top:6px }
+}

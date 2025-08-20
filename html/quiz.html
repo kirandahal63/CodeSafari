@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Safari</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../css/css.css" />
+</head>
+<body>
+
+  <!-- Transparent header + flying bird (WELCOME ONLY) -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-bar">
+      <div class="logo">🌿 Code Safari</div>
+      <ul class="nav-links">
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#welcome">HTML</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- HTML lives in /html, bird is in root → ../ -->
+  <img class="bird" id="bird" src="../birds-removebg-preview.png" alt="Flying bird" />
+
+  <!-- Confetti overlay (always on top) -->
+  <div id="confettiLayer" aria-hidden="true"></div>
+
+  <!-- WELCOME -->
+  <div class="content" id="welcome">
+    <div class="welcome-stack">
+      <div class="arch-title" role="img" aria-label="Welcome to the Quiz">
+        <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+          <path id="textArc" d="M50,140 Q280,10 510,140" fill="none" stroke="none"/>
+          <text text-anchor="middle">
+            <textPath href="#textArc" startOffset="50%">JUNGLE QUIZ</textPath>
+          </text>
+        </svg>
+      </div>
+
+      <p>Explore HTML in a fun safari-style quiz.</p>
+      <button class="button" aria-label="Start Your Adventure" id="startBtn">Start Your Adventure</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <section class="quiz-wrap" id="quiz">
+    <!-- fireflies -->
+    <div class="firefly" style="top:10%;left:8%; animation-delay:.2s"></div>
+    <div class="firefly" style="top:22%;left:84%; animation-delay:1.1s"></div>
+    <div class="firefly" style="top:70%;left:14%; animation-delay:.7s"></div>
+    <div class="firefly" style="top:64%;left:72%; animation-delay:.3s"></div>
+
+    <div class="notebook" role="region" aria-label="HTML Jungle Quiz notebook">
+      <div class="intro">
+        <span class="badge">HTML BASICS</span>
+        <span>Pick the best answer!</span>
+        <span class="progress" id="progress" aria-live="polite"></span>
+      </div>
+
+      <form id="quizForm">
+        <!-- Questions -->
+        <div class="q" data-answer="B">
+          <h4>1) Which tag creates a big page title?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q1" value="A"> &lt;p&gt;</label>
+            <label class="choice"><input type="radio" name="q1" value="B"> &lt;h1&gt;</label>
+            <label class="choice"><input type="radio" name="q1" value="C"> &lt;img&gt;</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="C">
+          <h4>2) Which tag shows a picture?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q2" value="A"> &lt;pic&gt;</label>
+            <label class="choice"><input type="radio" name="q2" value="B"> &lt;photo&gt;</label>
+            <label class="choice"><input type="radio" name="q2" value="C"> &lt;img&gt;</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="A">
+          <h4>3) What goes at the very top so browsers know the document type?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q3" value="A"> &lt;!DOCTYPE html&gt;</label>
+            <label class="choice"><input type="radio" name="q3" value="B"> &lt;head&gt;</label>
+            <label class="choice"><input type="radio" name="q3" value="C"> &lt;meta&gt;</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="B">
+          <h4>4) Which tag makes a clickable link?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q4" value="A"> &lt;link&gt;</label>
+            <label class="choice"><input type="radio" name="q4" value="B"> &lt;a&gt;</label>
+            <label class="choice"><input type="radio" name="q4" value="C"> &lt;href&gt;</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="C">
+          <h4>5) Where do we put the main page content the user sees?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q5" value="A"> &lt;title&gt;</label>
+            <label class="choice"><input type="radio" name="q5" value="B"> &lt;head&gt;</label>
+            <label class="choice"><input type="radio" name="q5" value="C"> &lt;body&gt;</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="A">
+          <h4>6) Which tag is used for a paragraph of text?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q6" value="A"> &lt;p&gt;</label>
+            <label class="choice"><input type="radio" name="q6" value="B"> &lt;para&gt;</label>
+            <label class="choice"><input type="radio" name="q6" value="C"> &lt;text&gt;</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="B">
+          <h4>7) Which attribute tells the link where to go?</h4>
+        <div class="choices">
+            <label class="choice"><input type="radio" name="q7" value="A"> src</label>
+            <label class="choice"><input type="radio" name="q7" value="B"> href</label>
+            <label class="choice"><input type="radio" name="q7" value="C"> alt</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="C">
+          <h4>8) Which tag makes a numbered list?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q8" value="A"> &lt;ul&gt;</label>
+            <label class="choice"><input type="radio" name="q8" value="B"> &lt;li&gt;</label>
+            <label class="choice"><input type="radio" name="q8" value="C"> &lt;ol&gt;</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="A">
+          <h4>9) Which attribute gives a picture helpful text if it can’t load?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q9" value="A"> alt</label>
+            <label class="choice"><input type="radio" name="q9" value="B"> title</label>
+            <label class="choice"><input type="radio" name="q9" value="C"> text</label>
+          </div>
+        </div>
+
+        <div class="q" data-answer="B">
+          <h4>10) What do we call words inside &lt; &gt; like &lt;h1&gt;?</h4>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q10" value="A"> Brackets</label>
+            <label class="choice"><input type="radio" name="q10" value="B"> Tags</label>
+            <label class="choice"><input type="radio" name="q10" value="C"> Notes</label>
+          </div>
+        </div>
+
+        <div class="quiz-actions">
+          <button type="button" class="btn" id="nextBtn">Next Page</button>
+          <button type="button" class="btn secondary" id="resetBtn">Reset Quiz</button>
+        </div>
+
+        <div class="score" id="scoreBox" aria-live="polite"></div>
+
+        <!-- Certificate (LOCAL image; appears in downloaded PNG) -->
+        <!-- HTML lives in /html, image is in root → ../ -->
+        <div class="certificate" id="certificate" aria-label="Certificate of Achievement">
+          <img id="certBg" src="../FINAL THANKS.avif" alt="" />
+          <div class="text">
+            <h2>Certificate of Achievement</h2>
+            <h3>awarded to</h3>
+            <h1 id="certName">Jungle Explorer</h1>
+            <p id="certLine"></p>
+            <p id="certDate"></p>
+          </div>
+        </div>
+
+        <div class="cert-controls" id="certControls">
+          <input id="studentName" type="text" placeholder="Type your name" maxlength="30" />
+          <button type="button" class="download" id="downloadBtn">Download Certificate</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer (WELCOME ONLY) -->
+  <footer class="site-footer" id="siteFooter">
+    © 2025 Code Safari. All Rights Reserved.
+  </footer>
+
+  <!-- html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <!-- External JS -->
+  <script src="../js/javascript.js"></script>
+</body>
+</html>
