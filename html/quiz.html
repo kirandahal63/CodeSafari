@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Code Safari</title>
 
-  <!-- Bubble font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet"/>
 
   <!-- External CSS -->
@@ -13,7 +13,25 @@
 </head>
 <body>
 
-  <!-- ===== Welcome Page ===== -->
+  <!-- Transparent header + flying bird (WELCOME ONLY) -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-bar">
+      <div class="logo">🌿 Code Safari</div>
+      <ul class="nav-links">
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#welcome">HTML</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- HTML lives in /html, bird is in root → ../ -->
+  <img class="bird" id="bird" src="../birds-removebg-preview.png" alt="Flying bird" />
+
+  <!-- Confetti overlay (always on top) -->
+  <div id="confettiLayer" aria-hidden="true"></div>
+
+  <!-- WELCOME -->
   <div class="content" id="welcome">
     <div class="welcome-stack">
       <div class="arch-title" role="img" aria-label="Welcome to the Quiz">
@@ -26,14 +44,11 @@
       </div>
 
       <p>Explore HTML in a fun safari-style quiz.</p>
-      <button class="button" aria-label="Start Your Adventure">Start Your Adventure</button>
+      <button class="button" aria-label="Start Your Adventure" id="startBtn">Start Your Adventure</button>
     </div>
   </div>
 
-  <!-- 360° flip overlay -->
-  <div id="flipOverlay" class="flip-overlay"><div class="sheet"></div></div>
-
-  <!-- ===== Quiz Section ===== -->
+  <!-- QUIZ -->
   <section class="quiz-wrap" id="quiz">
     <!-- fireflies -->
     <div class="firefly" style="top:10%;left:8%; animation-delay:.2s"></div>
@@ -49,7 +64,7 @@
       </div>
 
       <form id="quizForm">
-        <!-- === Questions (1 to 10) === -->
+        <!-- Questions -->
         <div class="q" data-answer="B">
           <h4>1) Which tag creates a big page title?</h4>
           <div class="choices">
@@ -106,7 +121,7 @@
 
         <div class="q" data-answer="B">
           <h4>7) Which attribute tells the link where to go?</h4>
-          <div class="choices">
+        <div class="choices">
             <label class="choice"><input type="radio" name="q7" value="A"> src</label>
             <label class="choice"><input type="radio" name="q7" value="B"> href</label>
             <label class="choice"><input type="radio" name="q7" value="C"> alt</label>
@@ -147,8 +162,10 @@
 
         <div class="score" id="scoreBox" aria-live="polite"></div>
 
-        <!-- Certificate -->
-        <div class="certificate" id="certificate">
+        <!-- Certificate (LOCAL image; appears in downloaded PNG) -->
+        <!-- HTML lives in /html, image is in root → ../ -->
+        <div class="certificate" id="certificate" aria-label="Certificate of Achievement">
+          <img id="certBg" src="../FINAL THANKS.avif" alt="" />
           <div class="text">
             <h2>Certificate of Achievement</h2>
             <h3>awarded to</h3>
@@ -165,6 +182,11 @@
       </form>
     </div>
   </section>
+
+  <!-- Footer (WELCOME ONLY) -->
+  <footer class="site-footer" id="siteFooter">
+    © 2025 Code Safari. All Rights Reserved.
+  </footer>
 
   <!-- html2canvas -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
