@@ -9,51 +9,106 @@
       font-family: 'Comic Neue', cursive;
       margin: 0;
       padding: 0;
-      background: url("../images/bg.png") no-repeat center center fixed;
-      background-size: cover;
+      background: white;
       color: #2e2e2e;
+      overflow-x: hidden;
     }
 
     /* Hero Section */
     .hero {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.6);
-    }
-    .hero h1 {
-      font-size: 3rem;
-      color: #2e5d34;
-      text-shadow: 2px 2px #fff;
-    }
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.hero-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;       /* center vertically */
+  left: 45%;      /* center horizontally */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #2e5d34;
+  text-shadow: 2px 2px 5px #fff;
+}
+
+.hero-text h1 {
+  font-size: 3rem;   /* big title */
+  margin: 0 0 10px 0;
+}
+
+.hero-text p {
+  font-size: 1.5rem; /* smaller subtitle */
+  margin: 0;
+}
+
+
+    .bg-above {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.bg-above img {
+  width: 100%;     /* full width across page */
+  height: auto;    /* keep proportions */
+  display: block;
+}
 
     /* About Us */
     .about {
-      padding: 50px;
-      background: rgba(255, 255, 255, 0.85);
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .about h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      color: #2e5d34;
-    }
-    .about p {
-      font-size: 1.2rem;
-      text-align: center;
-      line-height: 1.6;
-    }
+  padding: 50px;
+  background: white;
+  margin-top: 100px;
+}
+
+.about h2 {
+  font-size: 2.2rem;
+  color: #2e5d34;
+  margin-left: 500px;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  max-width: 800px;    /* keeps text in nice readable column */
+  margin: 0 auto 0 140px;      /* centers the div */
+  text-align: justify; /* justifies paragraph edges */
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+}
+/* Bird image styling */
+.about-bird img {
+  position:absolute;
+  width: 300px;  /* adjust size */
+  height: auto;
+  top: 900px;
+  right:250px;
+  border-radius: 10px;
+}
+ 
+
     
 
     /* Mission + Jeep */
     .mission {
       position: relative;
   padding: 50px 50px 70px; /* extra bottom padding for grass */
-  margin: 0;
-  background: rgba(255, 255, 255, 0.85);
+  margin-top: 0;
+  background: white;
   overflow: visible; /* allow jeep to move outside */
     }
     .mission h2 {
@@ -61,27 +116,22 @@
       font-size: 2.2rem;
       margin-bottom: 20px;
       color: #1d4d2c;
+      margin-top: -30px;
     }
     .mission p {
       font-size: 1.2rem;
       text-align: center;
       max-width: 800px;
-      margin: 0 auto 40px;
+      margin: 0  auto;
       line-height: 1.6;
+      margin-bottom: 100px;
     }
 
-    .lion-mission {
-  position: absolute;
-  top: 20px;     /* move to top */
-  left: 20px;    /* align to left */
-  width: 150px;  /* make smaller */
-  height: auto;
-  z-index: 1;
-}
+
     
 .grass-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: -30px;
   left: 0;
   width: 100%;
   height: 120px; /* adjust height */
@@ -89,84 +139,186 @@
   background-size: contain;
   z-index: 0; /* behind text */
 }
-    .jeep {
-      position: absolute;
-  bottom: 20px;       /* slightly above grass */
-  right: -200px;
-  width: 300px;
-  animation: drive 10s linear infinite;
-  z-index: 2;          /* in front of grass and text */
-     
-    }
-    @keyframes drive {
-      from { right: -250px; }
-      to { right: 110%; }
-    }
+  .jeep {
+  position: absolute;
+  top: 1240px;
+  right: -450px;   /* start off-screen to the right */
+  width: 550px;
+  animation: drive 5s linear forwards; /* run once and stop */
+  z-index: 2;
+}
+
+@keyframes drive {
+  from { right: -450px; }               /* start off right */
+  to { right: 40%; transform: translateX(40%); } /* stop at center */
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 50px; /* adjust based on road */
+}
+
+.lion {
+  position: absolute;
+  top: 100px;    /* adjust to place above road */
+  left: 150px;   /* move to left side */
+  width: 400px;  /* resize */
+  z-index: 1;
+}
 
 
     /* Team */
-    .team {
-      padding: 50px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 0 50px 50px;   /* remove top padding, keep bottom */
-     position: relative;
-    }
-    .team h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-      color: #2e5d34;
-    }
-    .members {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-    .member {
-      background: #e8f5e9;
-      padding: 20px;
-      border-radius: 15px;
-      width: 220px;
-      margin: 15px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .member img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #2e5d34;
-    }
-    .member h3 {
-      margin: 10px 0 5px;
-      font-size: 1.4rem;
-      color: #1d4d2c;
-    }
-    .member p {
-      font-size: 1rem;
-      color: #333;
-    }
+    .portfolio-section {
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;  
+  z-index: 20;    
+  background-color:#6FB531;  
+}
+.portfolio-box {
+  width: 230px;
+  height: 280px;
+  border-radius: 12px;
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:lighter;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 80px;
+  background: rgba(60, 179, 113, 0.9);
+}
+
+
+
+.member-card {
+  position: relative;
+  top: -40px;
+  width: 170px;
+  height: 90px; /* height of the card container */
+  border-radius: 12px;
+  overflow: visible; /* allow image to go outside */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.member-card img {
+  width: 100%;
+  height: 120px; /* taller than container */
+  object-fit: cover;
+  display: block;
+  position: relative;
+  top: -30px; /* shift image up */
+  border-radius: 12px 12px 0 0;
+}
+
+.member-name {
+  position: absolute;
+  bottom: 0px;   /* push up a bit from bottom */
+  left: 0px;     /* stick to left side */
+  width: 100%;     /* half of the image width */
+  background: rgba(36, 35, 35, 0.932);
+  color: #fff;
+  padding: 5px;
+  border-radius: 6x;
+}
+
+.member-info {
+  text-align: center;
+  margin-top: -20px;
+}
+
+.member-info h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-align: left;
+  color: #fffdfd;
+}
+
+.member-info p {
+  font-size: 13px;
+  margin: 2px 0;
+  color: #fffbfb;
+  text-align: justify;
+}
   </style>
 </head>
 <body>
 
   <!-- Hero -->
   <section class="hero">
-    <h1>🌿 Welcome to CodeSafari — Where Coding Becomes an Adventure! 🌿</h1>
+    <div class="hero-container">
+    <img src="../images/bg.png" alt="Safari Background">
+    <div class="hero-text">
+    <h1> Welcome to CodeSafari</h1>
+    <p>Where Coding Becomes an Adventure!</p>
+    </div>
+    </div>
   </section>
 
-  <!-- About -->
+
+  
+<!-- About -->
 <section class="about">
   <h2>About Us</h2>
-  <p>
-    At CodeSafari, we believe learning to code should feel like exploring a jungle full of hidden treasures. 
-    Instead of dull lessons, we guide kids through exciting adventures where every tag, every line of code,
-    is like discovering a new animal or plant in the wild. 
-    Our mission is simple: make HTML learning playful, creative, and unforgettable for curious young explorers.
-  </p>
+  <div class="about-text">
+    <p>
+      At CodeSafari, we believe learning to code should feel like exploring a jungle full of hidden treasures. 
+      Instead of dull lessons, we guide kids through exciting adventures where every tag, every line of code,
+      is like discovering a new animal or plant in the wild. 
+      Our mission is simple: make HTML learning playful, creative, and unforgettable for curious young explorers.
+    </p>
+  </div>
+  <div class="about-bird">
+      <img src="../images/bird.png" alt="Bird" />
+    </div>
+  <div class="scene">
+  <img src="../images/lion.png" class="lion">
+</div>
+  <div class="about-road">
+    <img src="../images/road.png" alt="Road" />
+  </div>
+  <div>
+    <img src="../images/jeep.png" alt="Safari Jeep" class="jeep">
+  </div>
 </section>
 
+<script>
+(function(){
+    const scene = document.getElementById('jeep-scene');
+    const jeep  = scene.querySelector('.jeep');
+
+    const start = () => jeep.classList.add('drive');
+
+    if ('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting){
+            start();
+            obs.unobserve(e.target); // play once
+          }
+        });
+      }, { threshold: 0.35 }); // ~35% of scene visible
+      io.observe(scene);
+    } else {
+      // Fallback for very old browsers
+      const onScroll = () => {
+        const r = scene.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.65){
+          start();
+          window.removeEventListener('scroll', onScroll);
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  })();
+</script>
 
   <!-- Mission -->
 <section class="mission">
@@ -176,15 +328,65 @@
     With interactive lessons, colorful challenges, and a supportive team of guides, 
     we transform learning HTML into a safari filled with curiosity, courage, and creativity.
   </p>
-  <img src="../images/lion.jpg" alt="Lion in Safari" class="lion-mission">
-  <img src="../images/jeep.png" alt="Safari Jeep" class="jeep">
-
+  
   <!-- Grass Divider -->
     <div class="grass-bottom">
     </div>
 
 </section>
-
-
+<section>
+<div class="portfolio-section">
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/kiran.jpg" alt="Member Photo">
+      <div class="member-name">Kiran</div>
+        <div class="member-info">
+          <h3>CEO</h3>
+          <p>Brings ideas to life with his imagination and design skills. He ensures every coding adventure feels exciting and playful.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/kesang.jpg" alt="Member Photo">
+      <div class="member-name">Kesang</div>
+        <div class="member-info">
+          <h3>Lead Instructor</h3>
+          <p>She connects kids with interactive challenges. She makes sure every explorer feels confident and curious while coding.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="images/aditya.jpg" alt="Member Photo">
+      <div class="member-name">Aditya</div>
+        <div class="member-info">
+          <h3>CAO</h3>
+          <p>He Builds the tools and games behind CodeSafari. He ensures every lesson runs smoothly like an exciting jungle quest.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="../images/kritika.jpg" alt="Member Photo">
+      <div class="member-name">Kritika</div>
+        <div class="member-info">
+          <h3>COO</h3>
+          <p>She makes coding simple and fun for kids. She loves turning complex tags into easy, memorable learning journeys.</p>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <img src="../images/anwesha.jpg" alt="Member Photo">
+      <div class="member-name">Anwesha</div>
+        <div class="member-info">
+          <h3>Director</h3>
+          <p>She adds the storytelling magic to CodeSafari. He turns every coding lesson into a thrilling safari tale full of discovery.</p>
+        </div>
+    </div>
+  </div>
+</div>
+</section>
 </body>
 </html>
