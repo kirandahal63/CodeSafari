@@ -16,7 +16,12 @@
   <!-- Transparent header + flying bird (WELCOME ONLY) -->
   <header class="site-header" id="siteHeader">
     <nav class="nav-bar">
-      <div class="logo">🌿 Code Safari</div>
+      <!-- BRAND (logo image in a circle + text, anchored to the far left) -->
+      <a class="brand" href="#welcome" aria-label="Code Safari Home">
+        <img class="brand-mark" src="../logo.png" alt="Code Safari logo" />
+        <span class="brand-text">Code Safari</span>
+      </a>
+
       <ul class="nav-links">
         <li><a href="#welcome">Home</a></li>
         <li><a href="#">About Us</a></li>
@@ -25,6 +30,7 @@
       </ul>
     </nav>
   </header>
+
   <!-- HTML lives in /html, bird is in root → ../ -->
   <img class="bird" id="bird" src="../birds-removebg-preview.png" alt="Flying bird" />
 
@@ -162,8 +168,7 @@
 
         <div class="score" id="scoreBox" aria-live="polite"></div>
 
-        <!-- Certificate (LOCAL image; appears in downloaded PNG) -->
-        <!-- HTML lives in /html, image is in root → ../ -->
+        <!-- Certificate -->
         <div class="certificate" id="certificate" aria-label="Certificate of Achievement">
           <img id="certBg" src="../FINAL THANKS.avif" alt="" />
           <div class="text">
