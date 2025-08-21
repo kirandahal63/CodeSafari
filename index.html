@@ -14,6 +14,7 @@
   html, body {
     height: 100%;
     width: 100%;
+    
   }
 
   .bg {
@@ -22,6 +23,10 @@
   min-height: 100vh;  /* allow it to be taller than screen */
   background-color: #e3db94;
   overflow: visible;  /* don’t hide content */
+}
+.parallax {
+  transition: transform 0.1 linear;
+  will-change: transform;
 }
   .tagline-section {
   position: absolute;
@@ -66,25 +71,37 @@
   /* Sun */
   .sun {
     position: absolute;
-    top: 130px;
+    /*top: 130px;*/
     left: 46%;
     transform: translateX(-50%);
     width: 1366px;
     height: auto;
     z-index: 1;
+    bottom: -200px;
+    animation: rise 1s ease-out forwards;
+  }
+  @keyframes rise {
+    0%   { bottom: -600px; opacity: 0; }
+    
+    100% { bottom: -250px; opacity: 1; }
   }
 
   /* Clouds */
   .cloud {
     position: absolute;
-    top: 215px; /* just below sun */
+    /*top: 215px;  just below sun */
     left: 46%;
     transform: translateX(-50%);
     width: 1366px;
     height: auto;
     z-index: 2;
+    animation: cloudrise 1.5s ease-out forwards;
   }
-
+  @keyframes cloudrise {
+    0%   { bottom: -600px; }
+    
+    100% { bottom: -350px;  }
+  }
   /* Bushes */
   .bush {
     position: absolute;
@@ -94,32 +111,57 @@
     width: 1366px;
     height: auto;
     z-index: 3;
+    animation: bushrise 1.3s ease-out forwards;
   }
+  @keyframes bushrise {
+  0%   { transform: translateX(-50%) translateY(500px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
   .treewithbush {
     position: absolute;
-    top: -520px; /* below main bush */
+    top: -520px; /* starting position */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(50px);
     width: 1366px;
     height: auto;
-    z-index: 4;
-  }
+    z-index: 5;
+    animation: riseUp 2s ease-in-out forwards;
+}
+
+
+@keyframes riseUp {
+  0%   { transform: translateX(-50%) translateY(100px);  }
+  100% { transform: translateX(-50%) translateY(0px);}
+}
+
   .tree-right {
     position: absolute;
     top: 0px;        /* adjust to align with monkey area */
-    right: -60px;       /* stick to the right */
+    right: -80px;       /* stick to the right */
     width: 400px;      /* smaller than full image */
     height: auto;
-    z-index: 5;
+    z-index: 4;
+    animation: shake 3s infinite ease-in-out;
+    transform-origin: bottom center;
   }
+  @keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}
   .monkey {
     position: absolute;
     top: 240px;       /* adjust to hang below tree */
-    right: 80px;     /* keep close to tree */
+    right: 50px;     /* keep close to tree */
     width: 200px;     /* smaller size */
     height: auto;
     z-index: 6;       /* above tree */
+    animation: shake 3s infinite ease-in-out;
+    transform-origin: bottom center;
   }
+  
   .elephant {
   position: absolute;
   top: 590px;     /* keep near the ground */
@@ -194,6 +236,13 @@
   width: 376px;    /* resize boat */
   height: auto;
   z-index: 8;      /* above river */
+  animation: boatEntry 3s ease-out forwards; /* page load animation */
+  transition: transform 0.3s linear; /* smooth parallax on scroll */
+}
+
+@keyframes boatEntry {
+  0%   { top: 1300px; right: -400px; opacity: 0; }
+  100% { top: 1250px; right: -70px; opacity: 1; }
 }
 .info-section {
   position: absolute;
@@ -250,15 +299,28 @@
 }
 
 .wave {
-    position: absolute;
-    top: 1350px; /* just below cloud */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1366px;
-    height: auto;
-    z-index: 6;
+  position: absolute;
+  top: 1350px; /* just below cloud */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1466px;
+  height: auto;
+  z-index: 6;
+  animation: waveMove 2s linear infinite;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(-50%) translateY(0);
   }
-  .blue-ocean{
+  50% {
+    transform: translateX(-48%) translateY(-5px); /* small up movement */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+.blue-ocean{
   position: absolute;
   top: 2100px;       /* start just above river */
   left: 0;
@@ -266,7 +328,7 @@
   height: 700px;    /* tall enough to cover behind river + stone */
   background-color: #4187dc;  /* green shade */
   z-index: 5;        /* above ground but below elephant if needed */
-}
+  }
 .diver {
   position: absolute;
   top: 1850px;   /* adjust vertical position inside ocean */
@@ -292,7 +354,7 @@
   z-index: 7;    /* above ocean, below anything you want in front */
 }
 .portfolio-section {
-  top: 1600px;
+  top: 1700px;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -342,13 +404,13 @@
 
 .member-name {
   position: absolute;
-  bottom: -15px;   /* push up a bit from bottom */
-  left: -20px;     /* stick to left side */
-  width: 80%;     /* half of the image width */
+  bottom: 0px;   /* push up a bit from bottom */
+  left: 0px;     /* stick to left side */
+  width: 100%;     /* half of the image width */
   background: rgba(36, 35, 35, 0.932);
   color: #fff;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 5px;
+  border-radius: 6x;
 }
 
 .member-info {
@@ -380,9 +442,9 @@
   <h1>CODE SAFARI</h1>
   <p>Where Learning <br>is a Wild Adventure.</p>
   <button class="cta-btn">Code with Us</button>
-</div>
-  <img src="images/sun.png" alt="Sun" class="sun">
-  <img src="images/cloud.png" alt="Cloud" class="cloud">
+  </div>
+  <img src="images/sun.png" alt="Sun" class="sun parallax" data-speed="2">
+  <img src="images/cloud.png" alt="Cloud" class="cloud parallax" data-speed="5">
   <img src="images/bush.png" alt="Bush" class="bush">
   <img src="images/treewithbush.png" alt="Tree with Bush" class="treewithbush">
   <img src="images/right_tree.png" alt="Tree Right" class="tree-right">
@@ -469,6 +531,28 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Helper function: keep X centered, only update Y movement
+  function setScrollTransform(el, factor) {
+    el.style.transform = `translateX(-50%) translateY(${window.scrollY * factor}px)`;
+  }
+
+  window.addEventListener("scroll", () => {
+    setScrollTransform(document.querySelector(".sun"), -0.2);
+    setScrollTransform(document.querySelector(".cloud"), -0);
+    setScrollTransform(document.querySelector(".bush"), -0.3);
+    setScrollTransform(document.querySelector(".treewithbush"), -0.1);
+  });
+  window.addEventListener("scroll", () => {
+  let scrollY = window.scrollY;
+
+  const boat = document.querySelector(".boat");
+
+  // move diagonally up-left as page scrolls
+  boat.style.transform = `translate(-${scrollY * 0.2}px, -${scrollY * 0.1}px)`;
+});
+</script>
 
 
 </body>
