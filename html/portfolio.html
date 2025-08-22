@@ -171,7 +171,7 @@
   height: 50px; /* adjust based on road */
 }
 
-.lion {
+.animal{
   position: absolute;
   top: 100px;    /* adjust to place above road */
   left: 150px;   /* move to left side */
@@ -289,7 +289,9 @@
   <div class="about-bird">
       <img src="../images/bird.png" alt="Bird" />
     </div>
-  
+  <div class="scene">
+  <img src="../images/animal.png" class="animal">
+</div>
   <div class="about-road">
     <img src="../images/road.png" alt="Road" />
   </div>
@@ -298,37 +300,8 @@
   </div>
 </section>
 
-<script>
-(function(){
-    const scene = document.getElementById('jeep-scene');
-    const jeep  = scene.querySelector('.jeep');
 
-    const start = () => jeep.classList.add('drive');
 
-    if ('IntersectionObserver' in window){
-      const io = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-          if (e.isIntersecting){
-            start();
-            obs.unobserve(e.target); // play once
-          }
-        });
-      }, { threshold: 0.35 }); // ~35% of scene visible
-      io.observe(scene);
-    } else {
-      // Fallback for very old browsers
-      const onScroll = () => {
-        const r = scene.getBoundingClientRect();
-        if (r.top < window.innerHeight * 0.65){
-          start();
-          window.removeEventListener('scroll', onScroll);
-        }
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    }
-  })();
-</script>
 
   <!-- Mission -->
 <section class="mission">
