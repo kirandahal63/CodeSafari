@@ -1,9 +1,12 @@
-// --- Elements
+// Elements
+const siteHeader = document.getElementById('siteHeader');
+const birdImg = document.getElementById('bird');
+const siteFooter = document.getElementById('siteFooter');
+
+const confettiLayer = document.getElementById('confettiLayer');
+
 const welcome = document.getElementById('welcome');
 const quiz = document.getElementById('quiz');
-
-const flipOverlay = document.getElementById('flipOverlay');
-const sheet = flipOverlay.querySelector('.sheet');
 
 const qs = Array.from(document.querySelectorAll('.q'));
 const progressEl = document.getElementById('progress');
@@ -11,6 +14,7 @@ const nextBtn = document.getElementById('nextBtn');
 const resetBtn = document.getElementById('resetBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 const scoreBox = document.getElementById('scoreBox');
+
 const cert = document.getElementById('certificate');
 const certControls = document.getElementById('certControls');
 const certName = document.getElementById('certName');
@@ -18,18 +22,9 @@ const certLine = document.getElementById('certLine');
 const certDate = document.getElementById('certDate');
 const nameInput = document.getElementById('studentName');
 
-let current = 0;
+const startBtn = document.getElementById('startBtn');
 
-// 360° flip helper
-function doFlip(cb){
-  flipOverlay.classList.add('show');
-  sheet.classList.add('anim');
-  setTimeout(()=>{
-    flipOverlay.classList.remove('show');
-    sheet.classList.remove('anim');
-    cb && cb();
-  }, 900);
-}
+let current = 0;
 
 function showQuestion(i){
   qs.forEach((q,idx)=> q.classList.toggle('active', idx === i));
@@ -53,7 +48,6 @@ function computeScore(){
   nextBtn.style.display = 'none';
   progressEl.textContent = '';
 
-  // Update certificate content
   const name = (nameInput.value || '').trim() || 'Jungle Explorer';
   certName.textContent = name;
   certLine.textContent = `for scoring ${correctCount} out of ${qs.length} in the Jungle HTML Quiz`;
@@ -81,20 +75,23 @@ function resetQuiz(){
   showQuestion(current);
 }
 
-// Welcome -> first question
-function startFlip(){
-  doFlip(()=>{
-    welcome.style.display = 'none';
-    quiz.style.display = 'flex';
-    showQuestion(0);
-    const h = qs[0].querySelector('h4'); if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
-  });
-}
-welcome.addEventListener('click', startFlip);
-const startBtn = welcome.querySelector('.button');
-startBtn.addEventListener('click', (e)=> e.preventDefault());
+// Start quiz (hide header + bird + footer so they don’t overlap)
+function startQuiz(){
+  if (siteHeader) siteHeader.style.display = 'none';
+  if (birdImg) birdImg.style.display = 'none';
+  if (siteFooter) siteFooter.style.display = 'none';
 
-// Color-only feedback
+  welcome.style.display = 'none';
+  quiz.style.display = 'flex';
+  showQuestion(0);
+  const h = qs[0].querySelector('h4'); if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
+}
+
+startBtn.addEventListener('click', (e)=> { e.preventDefault(); startQuiz(); });
+// Clicking anywhere on welcome (except the button itself) also starts
+welcome.addEventListener('click', (e)=> { if(e.target.id !== 'startBtn') startQuiz(); });
+
+// Color-only feedback on choices
 qs.forEach(q=>{
   const correct = q.dataset.answer;
   q.querySelectorAll('input[type="radio"]').forEach(input=>{
@@ -108,39 +105,43 @@ qs.forEach(q=>{
 // Next / Finish
 nextBtn.addEventListener('click', ()=>{
   if(current < qs.length - 1){
-    doFlip(()=>{
-      current++;
-      showQuestion(current);
-      const h = qs[current].querySelector('h4'); if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
-    });
+    current++;
+    showQuestion(current);
+    const h = qs[current].querySelector('h4'); if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
   }else{
-    doFlip(()=>{
-      qs.forEach(q=> q.classList.remove('active'));
-      computeScore();
-    });
+    qs.forEach(q=> q.classList.remove('active'));
+    computeScore();
   }
 });
 
 // Reset
-resetBtn.addEventListener('click', ()=> doFlip(()=> resetQuiz()));
+resetBtn.addEventListener('click', resetQuiz);
 
-// Update name on certificate live
+// Update cert name live
 nameInput.addEventListener('input', ()=>{
   certName.textContent = (nameInput.value || '').trim() || 'Jungle Explorer';
 });
 
-// Download certificate (DOM -> image)
+// Download certificate — hide confetti so PNG is clean
 downloadBtn.addEventListener('click', async ()=>{
   try{
-    if(getComputedStyle(cert).display === 'none'){
-      cert.style.display = 'block';
-    }
+    if(getComputedStyle(cert).display === 'none'){ cert.style.display = 'block'; }
+
+    // temporarily hide confetti during capture
+    const wasVisible = confettiLayer && confettiLayer.style.display !== 'none';
+    if (confettiLayer) confettiLayer.style.display = 'none';
+
+    const certImg = document.getElementById('certBg');
+    if (certImg) certImg.crossOrigin = 'anonymous'; // harmless if same-origin
+
     const canvas = await html2canvas(cert, {
       backgroundColor: null,
-      useCORS: true,
-      allowTaint: true,
-      scale: 2
+      scale: 2,
+      useCORS: true
     });
+
+    if (confettiLayer && wasVisible) confettiLayer.style.display = '';
+
     const dataURL = canvas.toDataURL('image/png');
     const a = document.createElement('a');
     const name = (nameInput.value || '').trim().replace(/\s+/g,'_') || 'Jungle_Explorer';
@@ -150,15 +151,16 @@ downloadBtn.addEventListener('click', async ()=>{
     a.click();
     a.remove();
   }catch(err){
-    alert('Download failed. If the background image is from another site, host it on your own domain or a CORS-enabled host, then try again.');
+    alert('Download failed. Make sure "../FINAL THANKS.avif" exists and is loaded from the same site.');
     console.error(err);
   }
 });
 
-// Confetti
+// Confetti — appended to fixed full-screen layer at top
 function rainConfetti(){
+  if (!confettiLayer) return;
   const colors = ['#ffad33','#ffd166','#06d6a0','#118ab2','#ef476f','#9bde7e'];
-  const pieces = 80;
+  const pieces = 90;
   for(let i=0;i<pieces;i++){
     const d = document.createElement('div');
     d.className = 'confetti-piece';
@@ -170,7 +172,7 @@ function rainConfetti(){
     d.style.background = colors[Math.floor(Math.random()*colors.length)];
     d.style.setProperty('--dur', dur+'s');
     d.style.transform = 'translateY(0) rotate(' + (Math.random()*180) + 'deg)';
-    document.body.appendChild(d);
-    setTimeout(()=> d.remove(), (dur*1000)+400);
+    confettiLayer.appendChild(d);
+    setTimeout(()=> d.remove(), (dur*1000)+500);
   }
 }
