@@ -130,6 +130,81 @@
                   inset -4px -4px 6px rgba(255,255,255,0.5),
                   inset 4px 4px 10px rgba(0,0,0,0.5);
     }
+    .site-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1500;
+  background: none;
+  border: none;
+  box-shadow: none;
+  transition: top 0.4s ease;
+}
+
+.site-header.hide {
+  top: -100px; /* moves header out of view */
+}
+
+
+.site-header.scrolled {
+  background: #ffffffef;   /* solid white when scrolled */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 60px; 
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.brand-mark {
+  width: auto; height: 50px;
+  /*border-radius: 20%;*/
+  object-fit: contain;
+  /*border: 2px solid rgba(0,0,0,.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
+}
+.brand-text {
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #000000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+  padding-right: 100px; 
+}
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #0f172a;
+  opacity: .9;
+  transition: opacity .2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+
+.site-footer {
+  text-align: center;
+  padding: 10px 0;
+  font-family: "Baloo 2", system-ui, sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  background: rgb(82, 73, 73);
+  border: none;
+}
 
     /* Bird flying */
     @keyframes fly {
@@ -209,7 +284,27 @@
   </div>
 
 </div>
+<header class="site-header" id="siteHeader">
+  <nav class="nav-bar">
+    <!-- Brand: logo + text (aligned left) -->
+    <a class="brand" href="#welcome" aria-label="Code Safari Home">
+      <img class="brand-mark" src="images/logo.png" alt="Code Safari logo" />
+      <span class="brand-text"></span>
+    </a>
 
+    <!-- Navigation links -->
+    <ul class="nav-links">
+      <li><a href="#welcome">Home</a></li>
+      <li><a href="#html">HTML</a></li>
+      <li><a href="#welcome">Quiz</a></li>
+      <li><a href="#quiz">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<footer class="site-footer" id="siteFooter">
+  © 2025 Code Safari. All Rights Reserved.
+</footer>
 
     <!-- Birds -->
     <img src="../images/5.png" style="position:absolute; width:400px; top:30px; left:-150px; animation:fly 22s linear infinite;" />
