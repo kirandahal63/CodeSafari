@@ -22,43 +22,70 @@ body{
 }
 
 /* ===== HEADER (WELCOME ONLY) ===== */
-.site-header{
-  position:fixed; top:0; left:0; width:100%;
-  z-index:1500;
-  background:none; border:none; box-shadow:none;
+.site-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1500;
+  background: none;
+  border: none;
+  box-shadow: none;
+  transition: top 0.4s ease;
 }
 
-/* make the nav stretch full width so brand sits at the far left corner */
-.nav-bar{
-  width:100%;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 16px;
+.site-header.hide {
+  top: -100px; /* moves header out of view */
 }
 
-/* brand = round logo + text */
-.brand{
-  display:flex; align-items:center; gap:10px;
-  text-decoration:none;
-}
-.brand-mark{
-  width:40px; height:40px; border-radius:50%;
-  object-fit:cover; display:block;
-  background:#fff; /* fallback circle */
-  border:2px solid rgba(0,0,0,.08);
-  box-shadow:0 2px 6px rgba(0,0,0,.12);
-}
-.brand-text{
-  font-family: var(--bubble); font-weight:700; font-size:20px;
-  color:#0f172a;
-  text-shadow:0 1px 2px rgba(255,255,255,.25);
+
+.site-header.scrolled {
+  background: #ffffffef;   /* solid white when scrolled */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
 }
 
-.nav-links{ list-style:none; display:flex; gap:24px; margin:0; padding:0; }
-.nav-links a{
-  text-decoration:none; font-weight:700; color:#0f172a;
-  opacity:.9; transition:opacity .2s;
+.nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 60px; 
 }
-.nav-links a:hover{ opacity:1; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.brand-mark {
+  width: auto; height: 50px;
+  /*border-radius: 20%;*/
+  object-fit: contain;
+  /*border: 2px solid rgba(0,0,0,.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
+}
+.brand-text {
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #000000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+  padding-right: 100px; 
+}
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #0f172a;
+  opacity: .9;
+  transition: opacity .2s;
+}
+.nav-links a:hover { opacity: 1; }
 
 /* ===== FLYING BIRD ===== */
 .bird{
@@ -249,11 +276,14 @@ body{
 @keyframes twinkle{ 0%,100%{ transform:translateY(0); opacity:.6 } 50%{ transform:translateY(-6px); opacity:1 } }
 
 /* ===== FOOTER (WELCOME ONLY) ===== */
-.site-footer{
-  position:fixed; bottom:0; left:0; width:100%;
-  text-align:center; padding:10px 0;
-  font-family: var(--bubble); font-size:14px; color:#0f172a;
-  z-index:1500; background:none; border:none; text-shadow:none;
+.site-footer {
+  text-align: center;
+  padding: 10px 0;
+  font-family: "Baloo 2", system-ui, sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  background: rgb(82, 73, 73);
+  border: none;
 }
 
 @media (max-width:600px){
