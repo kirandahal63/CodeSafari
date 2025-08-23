@@ -73,7 +73,7 @@
 }
 
 .about h2 {
-  font-size: 2.2rem;
+  font-size: 3.3rem;
   color: #2e5d34;
   margin-left: 500px;
   margin-bottom: 20px;
@@ -91,19 +91,37 @@
   color: #333;
 }
 /* Bird image styling */
-.about-bird img {
-  position:absolute;
-  width: 300px;  /* adjust size */
-  height: auto;
-  top: 900px;
+.bird img {
+  position:relative;
+  width: 200px;  /* adjust size */
+  height: 300px;
   right:250px;
   border-radius: 10px;
 }
+.bird {
+  position: absolute;
+  right: 50px;   /* starting X */
+  animation: flyDiagonal 4s forwards linear;
+}
+
+@keyframes flyDiagonal {
+  from {
+    right: -100px;   /* start off-screen right */
+    top: 1500px;     /* start lower down */
+  }
+  to {
+    right: 30%;      /* stop near center (less forward than 50%) */
+    top: 120%;        /* slightly below center (50% = center, 60% = lower) */
+    transform: translate(50%, -50%); /* keep bird truly centered at that point */
+  }
+}
+
  
    .about-road {
   margin: 0;
   padding: 0;
   width: 100%;
+  
 }
 
 .about-road img {
@@ -113,6 +131,8 @@
   margin-top: 100px;
   margin-left: -50px;
   padding: 0;
+  z-index: 2;
+  position: relative;
 } 
 
     /* Mission + Jeep */
@@ -153,7 +173,7 @@
 }
   .jeep {
   position: absolute;
-  top: 1240px;
+  top: 1300px;
   right: -450px;   /* start off-screen to the right */
   width: 550px;
   animation: drive 5s linear forwards; /* run once and stop */
@@ -162,7 +182,7 @@
 
 @keyframes drive {
   from { right: -450px; }               /* start off right */
-  to { right: 40%; transform: translateX(40%); } /* stop at center */
+  to { right: 10%; transform: translateX(10%); } /* stop at center */
 }
 
 .scene {
@@ -173,8 +193,8 @@
 
 .animal{
   position: absolute;
-  top: 100px;    /* adjust to place above road */
-  left: 150px;   /* move to left side */
+  top: 150px;    /* adjust to place above road */
+  left: 130px;   /* move to left side */
   width: 400px;  /* resize */
   z-index: 1;
 }
@@ -203,12 +223,15 @@
   font-weight:lighter;
   text-align: center;
   margin-top: 100px;
-  margin-bottom: 80px;
-  background: rgba(60, 179, 113, 0.9);
+  margin-bottom: 100px;
 }
 
-
-
+/* 5 different colors */
+.portfolio-box:nth-child(1) { background: rgba(255, 99, 71, 0.9); }   /* Red */
+.portfolio-box:nth-child(2) { background: rgba(60, 179, 113, 0.9); }  /* Green */
+.portfolio-box:nth-child(3) { background: rgb(118, 169, 175) }  /* Blue */
+.portfolio-box:nth-child(4) { background: rgba(255, 165, 0, 0.9); }   /* Orange */
+.portfolio-box:nth-child(5) { background: rgba(186, 85, 211, 0.9); }  /* Purple */
 .member-card {
   position: relative;
   top: -40px;
@@ -218,6 +241,7 @@
   overflow: visible; /* allow image to go outside */
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+
 
 .member-card img {
   width: 100%;
@@ -256,8 +280,51 @@
   font-size: 13px;
   margin: 2px 0;
   color: #fffbfb;
-  text-align: justify;
+  text-align:justify;
 }
+/* Modal styles */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 2000; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      border: 6px solid #228b22;
+      border-radius: 25px;
+      width: 80%;
+      max-width: 650px;
+      padding: 35px;
+      text-align: center;
+      position: relative;
+      animation: zoomIn 0.4s ease;
+    }
+    .modal-content img {
+      width: 160px;
+      height: 160px;
+      
+      margin-bottom: 20px;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #900;
+      cursor: pointer;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -286,11 +353,11 @@
       Our mission is simple: make HTML learning playful, creative, and unforgettable for curious young explorers.
     </p>
   </div>
-  <div class="about-bird">
-      <img src="../images/bird.png" alt="Bird" />
+  <div class="bird">
+      <img src="../images/bird.png" class="bird" />
     </div>
   <div class="scene">
-  <img src="../images/animal.png" class="animal">
+  <img src="../images/deer.png" class="animal">
 </div>
   <div class="about-road">
     <img src="../images/road.png" alt="Road" />
@@ -299,7 +366,6 @@
     <img src="../images/jeep.png" alt="Safari Jeep" class="jeep">
   </div>
 </section>
-
 
 
 
@@ -321,55 +387,140 @@
 <div class="portfolio-section">
   <div class="portfolio-box">
     <div class="member-card">
+      <div class="member" onclick="openModal('modal1')">
       <img src="images/kiran.jpg" alt="Member Photo">
       <div class="member-name">Kiran</div>
         <div class="member-info">
           <h3>CEO</h3>
           <p>Brings ideas to life with his imagination and design skills. He ensures every coding adventure feels exciting and playful.</p>
         </div>
+        </div>
     </div>
   </div>
   <div class="portfolio-box">
     <div class="member-card">
+      <div class="member" onclick="openModal('modal2')">
       <img src="images/kesang.jpg" alt="Member Photo">
       <div class="member-name">Kesang</div>
         <div class="member-info">
           <h3>Lead Instructor</h3>
           <p>She connects kids with interactive challenges. She makes sure every explorer feels confident and curious while coding.</p>
         </div>
+        </div>
     </div>
   </div>
   <div class="portfolio-box">
     <div class="member-card">
+      <div class="member" onclick="openModal('modal3')">
       <img src="images/aditya.jpg" alt="Member Photo">
       <div class="member-name">Aditya</div>
         <div class="member-info">
           <h3>CAO</h3>
           <p>He Builds the tools and games behind CodeSafari. He ensures every lesson runs smoothly like an exciting jungle quest.</p>
         </div>
+        </div>
     </div>
   </div>
   <div class="portfolio-box">
     <div class="member-card">
+      <div class="member" onclick="openModal('modal4')">
       <img src="../images/kritika.jpg" alt="Member Photo">
       <div class="member-name">Kritika</div>
         <div class="member-info">
           <h3>COO</h3>
           <p>She makes coding simple and fun for kids. She loves turning complex tags into easy, memorable learning journeys.</p>
         </div>
+        </div>
     </div>
   </div>
   <div class="portfolio-box">
     <div class="member-card">
+      <div class="member" onclick="openModal('modal5')">
       <img src="../images/anwesha.jpg" alt="Member Photo">
       <div class="member-name">Anwesha</div>
         <div class="member-info">
           <h3>Director</h3>
           <p>She adds the storytelling magic to CodeSafari. He turns every coding lesson into a thrilling safari tale full of discovery.</p>
         </div>
+        </div>
     </div>
   </div>
 </div>
+<!-- Modal for Member 1: Kiran -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <img src="../images/kiran.jpg" alt="Kiran">
+    <h2>Kiran</h2>
+    <p><strong>Role:</strong> CEO & Visionary</p>
+    <p>🌟 Kiran brings ideas to life with his boundless creativity. He ensures every coding adventure at CodeSafari is exciting, playful, and memorable. He oversees the overall vision, guiding the team to create innovative learning experiences for young explorers.</p>
+    <p><strong>Responsibilities:</strong> Leadership, Strategic Planning, Creative Direction</p>
+    <p><strong>Skills:</strong> Innovation, Design Thinking, Team Management</p>
+  </div>
+</div>
+
+<!-- Modal for Member 2: Kesang -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <img src="../images/kesang.jpg" alt="Kesang">
+    <h2>Kesang</h2>
+    <p><strong>Role:</strong> Lead Instructor</p>
+    <p>🎓 Kesang connects kids with interactive coding challenges. She designs lessons that are engaging and playful, ensuring every student feels confident and curious while exploring the world of code. Her teaching style combines fun with clear explanations to make learning seamless.</p>
+    <p><strong>Responsibilities:</strong> Curriculum Design, Mentoring Students, Conducting Interactive Classes</p>
+    <p><strong>Skills:</strong> Teaching, Child Engagement, Creativity, Coding Pedagogy</p>
+  </div>
+</div>
+
+<!-- Modal for Member 3: Aditya -->
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <img src="../images/aditya.jpg" alt="Aditya">
+    <h2>Aditya</h2>
+    <p><strong>Role:</strong> Chief Animation Officer (CAO)</p>
+    <p>⚡ Aditya builds the tools, games, and interactive lessons that make CodeSafari’s jungle come alive. He ensures smooth and fun experiences for students by integrating animations, interactive elements, and gamified learning challenges into every lesson.</p>
+    <p><strong>Responsibilities:</strong> Game Development, Interactive Lesson Design, Animation Implementation</p>
+    <p><strong>Skills:</strong> JavaScript, Animation, Game Logic, Problem Solving</p>
+  </div>
+</div>
+
+<!-- Modal for Member 4: Kritika -->
+<div id="modal4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal4')">&times;</span>
+    <img src="../images/kritika.jpg" alt="Kritika">
+    <h2>Kritika</h2>
+    <p><strong>Role:</strong> COO & Learning Designer</p>
+    <p>📖 Kritika makes coding simple and fun for kids. She transforms complex coding concepts into easy, memorable learning journeys. Her focus is on creating structured lessons, guides, and resources that ensure students enjoy every step of the coding adventure.</p>
+    <p><strong>Responsibilities:</strong> Lesson Planning, Curriculum Development, Content Creation</p>
+    <p><strong>Skills:</strong> HTML, Teaching, Storytelling, Instructional Design</p>
+  </div>
+</div>
+
+<!-- Modal for Member 5: Anwesha -->
+<div id="modal5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal5')">&times;</span>
+    <img src="../images/anwesha.jpg" alt="Anwesha">
+    <h2>Anwesha</h2>
+    <p><strong>Role:</strong> Director & Storytelling Expert</p>
+    <p>✨ Anwesha adds the storytelling magic to CodeSafari. She weaves narratives and themes into lessons, turning every coding session into an exciting safari tale full of discovery. Her goal is to make learning immersive and memorable for kids through creative storytelling.</p>
+    <p><strong>Responsibilities:</strong> Story Development, Lesson Theming, Creative Direction</p>
+    <p><strong>Skills:</strong> Creative Writing, Storytelling, Teaching, Content Development</p>
+  </div>
+</div>
+
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
 </section>
+
 </body>
 </html>
