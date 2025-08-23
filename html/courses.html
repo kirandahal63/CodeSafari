@@ -28,9 +28,93 @@
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238BC34A' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
+        /* New Header Styles */
+        .site-header {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%;
+            z-index: 1500;
+            background: none;
+            border: none;
+            box-shadow: none;
+            transition: top 0.4s ease;
+        }
+
+        .site-header.hide {
+            top: -100px; /* moves header out of view */
+        }
+
+        .site-header.scrolled {
+            background: #ffffffef;   /* solid white when scrolled */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+        }
+
+        .nav-bar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 60px; 
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .brand-mark {
+            width: auto; 
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .brand-text {
+            font-family: sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 50px;
+            margin: 0;
+            padding: 0;
+            padding-right: 100px; 
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 700;
+            color: #0f172a;
+            opacity: .9;
+            transition: opacity .2s;
+        }
+        
+        .nav-links a:hover { 
+            opacity: 1; 
+        }
+
+        /* New Footer Styles */
+        .site-footer {
+            text-align: center;
+            padding: 10px 0;
+            font-family: "Baloo 2", system-ui, sans-serif;
+            font-size: 14px;
+            color: #0f172a;
+            background: rgb(82, 73, 73);
+            border: none;
+            color: white;
+        }
+
         .container {
             display: flex;
             min-height: 100vh;
+            padding-top: 66px; /* Account for fixed header */
         }
 
         /* Sidebar Styles */
@@ -38,19 +122,17 @@
             width: var(--sidebar-width);
             background: #538c50;
             color: white;
-            padding: 20px 0;
+            padding: 10px 0;
             overflow-y: auto;
             height: 100vh;
             position: fixed;
             box-shadow: 3px 0 10px rgba(0,0,0,0.2);
             z-index: 10;
+            top: 90px; /* Account for fixed header */
         }
 
         .logo {
-            text-align: center;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.2);
+            display: none;
         }
 
         .logo h1 {
@@ -346,6 +428,7 @@
             .sidebar {
                 width: 70px;
                 overflow: visible;
+                top: 66px; /* Account for fixed header */
             }
             
             .sidebar .logo h1, .sidebar-nav span {
@@ -359,12 +442,21 @@
             .animal {
                 width: 100%;
             }
+
+            .nav-bar {
+                padding: 8px 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                padding-right: 20px;
+            }
         }
 
         /* Monkey animation styles */
         .monkey {
             position: absolute;
-            top: 77px;
+            top: 145px;
             right: 50px;
             width: 200px;
             height: auto;
@@ -389,12 +481,25 @@
     </style>
 </head>
 <body>
+    <!-- New Header -->
+    <header class="site-header" id="siteHeader">
+        <nav class="nav-bar">
+            <a href="#" class="brand">
+                <img class="brand-mark" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234CAF50'/%3E%3Ctext x='50' y='65' font-family='Arial' font-size='40' text-anchor='middle' fill='white'%3E🌿%3C/text%3E%3C/svg%3E" alt="Jungle HTML Logo">
+                <span class="brand-text">Jungle HTML</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="container">
         <!-- Sidebar Navigation -->
         <nav class="sidebar">
-            <div class="logo">
-                <h1>🌿 Jungle HTML</h1>
-            </div>
             <ul class="sidebar-nav">
                 <li><a href="#" class="active" data-topic="home">🏠 Home</a></li>
                 <li><a href="#" data-topic="html-basics">📝 HTML Basics</a></li>
@@ -485,6 +590,11 @@
             </div>
         </main>
     </div>
+
+    <!-- New Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2023 Jungle HTML Adventure. All rights reserved.</p>
+    </footer>
 
     <script>
         // Topic content data
@@ -690,6 +800,28 @@
         document.addEventListener('DOMContentLoaded', function() {
             runCode();
             
+            // Add scroll event for header
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('siteHeader');
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Add scrolled class when page is scrolled
+                if (scrollTop > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Hide header on scroll down, show on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.classList.add('hide');
+                } else {
+                    header.classList.remove('hide');
+                }
+                lastScrollTop = scrollTop;
+            });
+            
             // Add click event listeners to all sidebar links
             document.querySelectorAll('.sidebar-nav a').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -744,7 +876,7 @@
   <li>Coconuts</li>
   <li>Corn (for parrots!)</li>
 </ul>
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23FF9800'/%3E%3Ccircle cx='35' cy='40' r='5' fill='white'/%3E%3Ccircle cx='65' cy='40' r='5' fill='white'/%3E%3Cpath d='M35 65 Q50 75 65 65' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E" width="100" alt="Smiley face">`;
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FF9800'/%3E%3Ctext x='50' y='65' font-family='Arial' font-size='40' text-anchor='middle' fill='white'%3E🐵%3C/text%3E%3C/svg%3E" alt="Monkey" width="100">`;
             document.getElementById('html-code').value = exampleCode;
             runCode();
         }
@@ -752,12 +884,13 @@
         // Function to toggle live preview
         function toggleLivePreview() {
             const livePreviewToggle = document.getElementById('live-preview-toggle');
-            const htmlCodeTextarea = document.getElementById('html-code');
+            const htmlTextarea = document.getElementById('html-code');
             
             if (livePreviewToggle.checked) {
-                htmlCodeTextarea.addEventListener('input', runCode);
+                htmlTextarea.addEventListener('input', runCode);
+                runCode(); // Run once to update
             } else {
-                htmlCodeTextarea.removeEventListener('input', runCode);
+                htmlTextarea.removeEventListener('input', runCode);
             }
         }
     </script>
