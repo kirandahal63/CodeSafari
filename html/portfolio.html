@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - CodeSafari</title>
+  <style>
+    .site-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1500;
+  background: none;
+  border: none;
+  box-shadow: none;
+  transition: top 0.4s ease;
+}
+
+.site-header.hide {
+  top: -100px; /* moves header out of view */
+}
+
+
+.site-header.scrolled {
+  background: #ffffffef;   /* solid white when scrolled */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 60px; 
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.brand-mark {
+  width: auto; height: 50px;
+  /*border-radius: 20%;*/
+  object-fit: contain;
+  /*border: 2px solid rgba(0,0,0,.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
+}
+.brand-text {
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #000000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+  padding-right: 100px; 
+}
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #0f172a;
+  opacity: .9;
+  transition: opacity .2s;
+}
+.nav-links a:hover { opacity: 1; }
+    body {
+      font-family: 'Comic Neue', cursive;
+      margin: 0;
+      padding: 0;
+      background: white;
+      color: #2e2e2e;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.hero-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;       /* center vertically */
+  left: 45%;      /* center horizontally */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #2e5d34;
+  text-shadow: 2px 2px 5px #fff;
+}
+
+.hero-text h1 {
+  font-size: 3rem;   /* big title */
+  margin: 0 0 10px 0;
+}
+
+.hero-text p {
+  font-size: 1.5rem; /* smaller subtitle */
+  margin: 0;
+}
+
+
+    .bg-above {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.bg-above img {
+  width: 100%;     /* full width across page */
+  height: auto;    /* keep proportions */
+  display: block;
+}
+
+    /* About Us */
+    .about {
+  padding: 50px;
+  background: white;
+  margin-top: 100px;
+}
+
+.about h2 {
+  font-size: 3.3rem;
+  color: #2e5d34;
+  margin-left: 500px;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  max-width: 800px;    /* keeps text in nice readable column */
+  margin: 0 auto 0 140px;      /* centers the div */
+  text-align: justify; /* justifies paragraph edges */
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+}
+/* Bird image styling */
+.bird img {
+  position:relative;
+  width: 200px;  /* adjust size */
+  height: 300px;
+  right:250px;
+  border-radius: 10px;
+}
+.bird {
+  position: absolute;
+  right: 50px;   /* starting X */
+  animation: flyDiagonal 4s forwards linear;
+}
+
+@keyframes flyDiagonal {
+  from {
+    right: -100px;   /* start off-screen right */
+    top: 1500px;     /* start lower down */
+  }
+  to {
+    right: 30%;      /* stop near center (less forward than 50%) */
+    top: 120%;        /* slightly below center (50% = center, 60% = lower) */
+    transform: translate(50%, -50%); /* keep bird truly centered at that point */
+  }
+}
+
+ 
+   .about-road {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+}
+
+.about-road img {
+  width: 100vw;       /* force full viewport width */
+  height: 600px;
+  display: block;
+  margin-top: 100px;
+  margin-left: -50px;
+  padding: 0;
+  z-index: 2;
+  position: relative;
+} 
+
+    /* Mission + Jeep */
+    .mission {
+      position: relative;
+  padding: 50px 50px 70px; /* extra bottom padding for grass */
+  margin-top: 0;
+  background: white;
+  overflow: visible; /* allow jeep to move outside */
+    }
+    .mission h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #1d4d2c;
+      margin-top: -30px;
+    }
+    .mission p {
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0  auto;
+      line-height: 1.6;
+      margin-bottom: 100px;
+    }
+
+
+    
+.grass-bottom {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 120px; /* adjust height */
+  background: url("../images/grass.png") repeat-x;
+  background-size: contain;
+  z-index: 0; /* behind text */
+}
+  .jeep {
+  position: absolute;
+  top: 1200px;
+  right: -450px;   /* start off-screen to the right */
+  width: 650px;
+  animation: drive 5s linear forwards; /* run once and stop */
+  z-index: 2;
+}
+
+@keyframes drive {
+  from { right: -450px; }               /* start off right */
+  to { right: 10%; transform: translateX(10%); } /* stop at center */
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 50px; /* adjust based on road */
+}
+
+.animal{
+  position: absolute;
+  top: 150px;    /* adjust to place above road */
+  left: 130px;   /* move to left side */
+  width: 400px;  /* resize */
+  z-index: 1;
+}
+
+
+    /* Team */
+    .portfolio-section {
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;  
+  z-index: 20;    
+  background-color:#6FB531;  
+}
+.portfolio-box {
+  width: 230px;
+  height: 280px;
+  border-radius: 12px;
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:lighter;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 70px;
+}
+
+/* 5 different colors */
+.portfolio-box:nth-child(1) { background: rgba(255, 99, 71, 0.9); }   /* Red */
+.portfolio-box:nth-child(2) { background: rgba(60, 179, 113, 0.9); }  /* Green */
+.portfolio-box:nth-child(3) { background: rgb(118, 169, 175) }  /* Blue */
+.portfolio-box:nth-child(4) { background: rgba(255, 165, 0, 0.9); }   /* Orange */
+.portfolio-box:nth-child(5) { background: rgba(186, 85, 211, 0.9); }  /* Purple */
+
+
+.member-card {
+  position: relative;
+  top: -40px;
+  width: 170px;
+  height: 90px; /* height of the card container */
+  border-radius: 12px;
+  overflow: visible; /* allow image to go outside */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+.member-card img {
+  width: 100%;
+  height: 120px; /* taller than container */
+  object-fit: cover;
+  display: block;
+  position: relative;
+  top: -30px; /* shift image up */
+  border-radius: 12px 12px 0 0;
+}
+
+.member-name {
+  position: absolute;
+  bottom: 0px;   /* push up a bit from bottom */
+  left: 0px;     /* stick to left side */
+  width: 100%;     /* half of the image width */
+  background: rgba(36, 35, 35, 0.932);
+  color: #fff;
+  padding: 5px;
+  border-radius: 6x;
+}
+.portfolio-box:nth-child(1) .member-name { background: rgba(163, 63, 45, 0.966); }   /* Red */
+.portfolio-box:nth-child(2) .member-name { background: rgba(38, 112, 71, 0.966); }  /* Green */
+.portfolio-box:nth-child(3) .member-name { background: rgba(72, 104, 107, 0.966); } /* Blue */
+.portfolio-box:nth-child(4) .member-name { background: rgba(212, 139, 1, 0.966); }   /* Orange */
+.portfolio-box:nth-child(5) .member-name { background: rgba(105, 48, 119, 0.966);} /*purple*/
+
+.member-info {
+  text-align: center;
+  margin-top: -20px;
+}
+
+.member-info h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-align: left;
+  color: #fffdfd;
+}
+
+.member-info p {
+  font-size: 13px;
+  margin: 2px 0;
+  color: #fffbfb;
+  text-align:justify;
+}
+/* Modal styles */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 2000; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      border: 6px solid #228b22;
+      border-radius: 25px;
+      width: 80%;
+      max-width: 650px;
+      padding: 35px;
+      text-align: center;
+      position: relative;
+      animation: zoomIn 0.4s ease;
+    }
+    .modal-content img {
+      width: 160px;
+      height: 160px;
+
+      margin-bottom: 20px;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #900;
+      cursor: pointer;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .site-footer {
+  text-align: center;
+  padding: 20px 0;
+  font-family: "Baloo 2", system-ui, sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  background: rgb(82, 73, 73);
+  border: none;
+
+}
+  </style>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <nav class="nav-bar">
+    <!-- Brand: logo + text (aligned left) -->
+    <a class="brand" href="#welcome" aria-label="Code Safari Home">
+      <img class="brand-mark" src="images/logo.png" alt="Code Safari logo" />
+      <span class="brand-text"></span>
+    </a>
+
+    <!-- Navigation links -->
+    <ul class="nav-links">
+      <li><a href="#welcome">Home</a></li>
+      <li><a href="#html">HTML</a></li>
+      <li><a href="#welcome">Quiz</a></li>
+      <li><a href="#quiz">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+    <img src="../images/bg.png" alt="Safari Background">
+    <div class="hero-text">
+    <h1> Welcome to CodeSafari</h1>
+    <p>Where Coding Becomes an Adventure!</p>
+    </div>
+    </div>
+  </section>
+
+
+  
+<!-- About -->
+<section class="about">
+  <h2>About Us</h2>
+  <div class="about-text">
+    <p>
+      At CodeSafari, we believe learning to code should feel like exploring a jungle full of hidden treasures. 
+      Instead of dull lessons, we guide kids through exciting adventures where every tag, every line of code,
+      is like discovering a new animal or plant in the wild. 
+      Our mission is simple: make HTML learning playful, creative, and unforgettable for curious young explorers.
+    </p>
+  </div>
+  <div class="bird">
+      <img src="../images/bird.png" class="bird" />
+    </div>
+  <div class="scene">
+  <img src="../images/deer.png" class="animal">
+</div>
+  <div class="about-road">
+    <img src="../images/road.png" alt="Road" />
+  </div>
+  <div>
+    <img src="../images/jeep.png" alt="Safari Jeep" class="jeep">
+  </div>
+</section>
+
+
+
+  <!-- Mission -->
+<section class="mission">
+  <h2>Our Mission</h2>
+  <p>
+    Our mission is to take children on an adventurous journey into the world of coding. 
+    With interactive lessons, colorful challenges, and a supportive team of guides, 
+    we transform learning HTML into a safari filled with curiosity, courage, and creativity.
+  </p>
+  
+  <!-- Grass Divider -->
+    <div class="grass-bottom">
+    </div>
+
+</section>
+<section>
+<div class="portfolio-section">
+  <div class="portfolio-box">
+    <div class="member-card">
+      <div class="member" onclick="openModal('modal1')">
+      <img src="images/kiran.jpg" alt="Member Photo">
+      <div class="member-name">Kiran</div>
+        <div class="member-info">
+          <h3>CEO</h3>
+          <p>Brings ideas to life with his imagination and design skills. He ensures every coding adventure feels exciting and playful.</p>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <div class="member" onclick="openModal('modal2')">
+      <img src="images/kesang.jpg" alt="Member Photo">
+      <div class="member-name">Kesang</div>
+        <div class="member-info">
+          <h3>Lead Instructor</h3>
+          <p>She connects kids with interactive challenges. She makes sure every explorer feels confident and curious while coding.</p>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <div class="member" onclick="openModal('modal3')">
+      <img src="images/aditya.jpg" alt="Member Photo">
+      <div class="member-name">Aditya</div>
+        <div class="member-info">
+          <h3>CAO</h3>
+          <p>He Builds the tools and games behind CodeSafari. He ensures every lesson runs smoothly like an exciting jungle quest.</p>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <div class="member" onclick="openModal('modal4')">
+      <img src="../images/kritika.jpg" alt="Member Photo">
+      <div class="member-name">Kritika</div>
+        <div class="member-info">
+          <h3>COO</h3>
+          <p>She makes coding simple and fun for kids. She loves turning complex tags into easy, memorable learning journeys.</p>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class="portfolio-box">
+    <div class="member-card">
+      <div class="member" onclick="openModal('modal5')">
+      <img src="../images/anwesha.jpg" alt="Member Photo">
+      <div class="member-name">Anwesha</div>
+        <div class="member-info">
+          <h3>Director</h3>
+          <p>She adds the storytelling magic to CodeSafari. He turns every coding lesson into a thrilling safari tale full of discovery.</p>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for Member 1: Kiran -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <img src="../images/kiran.jpg" alt="Kiran">
+    <h2>Kiran</h2>
+    <p><strong>Role:</strong> CEO & Visionary</p>
+    <p>🌟 Kiran brings ideas to life with his boundless creativity. He ensures every coding adventure at CodeSafari is exciting, playful, and memorable. He oversees the overall vision, guiding the team to create innovative learning experiences for young explorers.</p>
+    <p><strong>Responsibilities:</strong> Leadership, Strategic Planning, Creative Direction</p>
+    <p><strong>Skills:</strong> Innovation, Design Thinking, Team Management</p>
+  </div>
+</div>
+
+<!-- Modal for Member 2: Kesang -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <img src="../images/kesang.jpg" alt="Kesang">
+    <h2>Kesang</h2>
+    <p><strong>Role:</strong> Lead Instructor</p>
+    <p>🎓 Kesang connects kids with interactive coding challenges. She designs lessons that are engaging and playful, ensuring every student feels confident and curious while exploring the world of code. Her teaching style combines fun with clear explanations to make learning seamless.</p>
+    <p><strong>Responsibilities:</strong> Curriculum Design, Mentoring Students, Conducting Interactive Classes</p>
+    <p><strong>Skills:</strong> Teaching, Child Engagement, Creativity, Coding Pedagogy</p>
+  </div>
+</div>
+
+<!-- Modal for Member 3: Aditya -->
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <img src="../images/aditya.jpg" alt="Aditya">
+    <h2>Aditya</h2>
+    <p><strong>Role:</strong> Chief Animation Officer (CAO)</p>
+    <p>⚡ Aditya builds the tools, games, and interactive lessons that make CodeSafari’s jungle come alive. He ensures smooth and fun experiences for students by integrating animations, interactive elements, and gamified learning challenges into every lesson.</p>
+    <p><strong>Responsibilities:</strong> Game Development, Interactive Lesson Design, Animation Implementation</p>
+    <p><strong>Skills:</strong> JavaScript, Animation, Game Logic, Problem Solving</p>
+  </div>
+</div>
+
+<!-- Modal for Member 4: Kritika -->
+<div id="modal4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal4')">&times;</span>
+    <img src="../images/kritika.jpg" alt="Kritika">
+    <h2>Kritika</h2>
+    <p><strong>Role:</strong> COO & Learning Designer</p>
+    <p>📖 Kritika makes coding simple and fun for kids. She transforms complex coding concepts into easy, memorable learning journeys. Her focus is on creating structured lessons, guides, and resources that ensure students enjoy every step of the coding adventure.</p>
+    <p><strong>Responsibilities:</strong> Lesson Planning, Curriculum Development, Content Creation</p>
+    <p><strong>Skills:</strong> HTML, Teaching, Storytelling, Instructional Design</p>
+  </div>
+</div>
+
+<!-- Modal for Member 5: Anwesha -->
+<div id="modal5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal5')">&times;</span>
+    <img src="../images/anwesha.jpg" alt="Anwesha">
+    <h2>Anwesha</h2>
+    <p><strong>Role:</strong> Director & Storytelling Expert</p>
+    <p>✨ Anwesha adds the storytelling magic to CodeSafari. She weaves narratives and themes into lessons, turning every coding session into an exciting safari tale full of discovery. Her goal is to make learning immersive and memorable for kids through creative storytelling.</p>
+    <p><strong>Responsibilities:</strong> Story Development, Lesson Theming, Creative Direction</p>
+    <p><strong>Skills:</strong> Creative Writing, Storytelling, Teaching, Content Development</p>
+  </div>
+</div>
+
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+   window.addEventListener("scroll", () => {
+  const header = document.getElementById("siteHeader");
+
+  if (window.scrollY > 50) { // after 50px scroll
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+let hideTimeout;
+let hasTriggered = false; // controls effect
+
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".site-header");
+
+  // If user just left the top and effect hasn't triggered yet
+  if (window.scrollY > 0 && !hasTriggered) {
+    hasTriggered = true; // mark as triggered
+    header.classList.add("hide");
+
+    clearTimeout(hideTimeout);
+
+    hideTimeout = setTimeout(() => {
+      header.classList.remove("hide");
+    }, 1000);
+  }
+
+  // Reset trigger ONLY when back at very top
+  if (window.scrollY === 0) {
+    hasTriggered = false;
+  }
+});
+  </script>
+</section>
+<footer class="site-footer" id="siteFooter">
+  © 2025 Code Safari. All Rights Reserved.
+</footer>
+</body>
+</html>
