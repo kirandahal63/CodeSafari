@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,8 +32,8 @@
         /* New Header Styles */
         .site-header {
             position: fixed;
-            top: 0; 
-            left: 0; 
+            top: 0;
+            left: 0;
             width: 100%;
             z-index: 1500;
             background: none;
@@ -42,12 +43,15 @@
         }
 
         .site-header.hide {
-            top: -100px; /* moves header out of view */
+            top: -100px;
+            /* moves header out of view */
         }
 
         .site-header.scrolled {
-            background: #ffffffef;   /* solid white when scrolled */
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+            background: #ffffffef;
+            /* solid white when scrolled */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            /* subtle shadow */
         }
 
         .nav-bar {
@@ -55,7 +59,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 60px; 
+            padding: 8px 60px;
         }
 
         .brand {
@@ -64,13 +68,13 @@
             gap: 10px;
             text-decoration: none;
         }
-        
+
         .brand-mark {
-            width: auto; 
+            width: auto;
             height: 50px;
             object-fit: contain;
         }
-        
+
         .brand-text {
             font-family: sans-serif;
             font-weight: 900;
@@ -84,9 +88,9 @@
             gap: 50px;
             margin: 0;
             padding: 0;
-            padding-right: 100px; 
+            padding-right: 100px;
         }
-        
+
         .nav-links a {
             text-decoration: none;
             font-weight: 700;
@@ -94,9 +98,9 @@
             opacity: .9;
             transition: opacity .2s;
         }
-        
-        .nav-links a:hover { 
-            opacity: 1; 
+
+        .nav-links a:hover {
+            opacity: 1;
         }
 
         /* New Footer Styles */
@@ -114,7 +118,8 @@
         .container {
             display: flex;
             min-height: 100vh;
-            padding-top: 66px; /* Account for fixed header */
+            padding-top: 66px;
+            /* Account for fixed header */
         }
 
         /* Sidebar Styles */
@@ -124,11 +129,16 @@
             color: white;
             padding: 10px 0;
             overflow-y: auto;
-            height: 100vh;
+            height: calc(100vh - 130px);
             position: fixed;
-            box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
             z-index: 10;
-            top: 90px; /* Account for fixed header */
+            top: 90px;
+            /* Account for fixed header */
+            border-radius: 15px;
+            /* Add this line to round all corners */
+            margin: 0 0 20px 10px;
+            /* Adds space at bottom and left */
         }
 
         .logo {
@@ -191,7 +201,7 @@
             padding: 15px 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -222,7 +232,7 @@
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .topic-introduction h2 {
@@ -247,7 +257,8 @@
             font-family: 'Courier New', monospace;
         }
 
-        .topic-content ul, .topic-content ol {
+        .topic-content ul,
+        .topic-content ol {
             margin-left: 20px;
             margin-bottom: 15px;
         }
@@ -266,11 +277,12 @@
             }
         }
 
-        .code-editor, .preview {
+        .code-editor,
+        .preview {
             background: white;
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             height: 400px;
             overflow: auto;
         }
@@ -350,7 +362,7 @@
             background: white;
             padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             width: calc(33.333% - 15px);
             min-width: 200px;
             text-align: center;
@@ -415,11 +427,11 @@
             border-radius: 50%;
         }
 
-        input:checked + .slider {
+        input:checked+.slider {
             background-color: var(--primary);
         }
 
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(26px);
         }
 
@@ -428,17 +440,19 @@
             .sidebar {
                 width: 70px;
                 overflow: visible;
-                top: 66px; /* Account for fixed header */
+                top: 66px;
+                /* Account for fixed header */
             }
-            
-            .sidebar .logo h1, .sidebar-nav span {
+
+            .sidebar .logo h1,
+            .sidebar-nav span {
                 display: none;
             }
-            
+
             .main-content {
                 margin-left: 70px;
             }
-            
+
             .animal {
                 width: 100%;
             }
@@ -471,28 +485,45 @@
         }
 
         @keyframes shake {
-          0% { transform: rotate(0deg); }
-          25% { transform: rotate(2deg); }
-          50% { transform: rotate(-2deg); }
-          75% { transform: rotate(2deg); }
-          100% { transform: rotate(0deg); }
-        }
+            0% {
+                transform: rotate(0deg);
+            }
 
+            25% {
+                transform: rotate(2deg);
+            }
+
+            50% {
+                transform: rotate(-2deg);
+            }
+
+            75% {
+                transform: rotate(2deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- New Header -->
     <header class="site-header" id="siteHeader">
         <nav class="nav-bar">
-            <a href="#" class="brand">
-                <img class="brand-mark" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234CAF50'/%3E%3Ctext x='50' y='65' font-family='Arial' font-size='40' text-anchor='middle' fill='white'%3E🌿%3C/text%3E%3C/svg%3E" alt="Jungle HTML Logo">
-                <span class="brand-text">Jungle HTML</span>
+            <!-- Brand: logo + text (aligned left) -->
+            <a class="brand" href="#welcome" aria-label="Code Safari Home">
+                <img class="brand-mark" src="../images/logo.jpeg" alt="Code Safari logo" />
+                <span class="brand-text"></span>
             </a>
+
+            <!-- Navigation links -->
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#welcome">Home</a></li>
+                <li><a href="#html">HTML</a></li>
+                <li><a href="#welcome">Quiz</a></li>
+                <li><a href="#quiz">About Us</a></li>
             </ul>
         </nav>
     </header>
@@ -530,8 +561,10 @@
             <div class="topic-introduction">
                 <h2 id="topic-title">Welcome to Jungle HTML Adventure!</h2>
                 <div class="topic-content" id="topic-content">
-                    <p>Hello, jungle explorer! I'm Tiki the Tiger, and I'll be your guide through the wild world of HTML.</p>
-                    <p>HTML (HyperText Markup Language) is the foundation of every website you visit. It's like the skeleton that gives structure to web pages.</p>
+                    <p>Hello, jungle explorer! I'm Tiki the Tiger, and I'll be your guide through the wild world of
+                        HTML.</p>
+                    <p>HTML (HyperText Markup Language) is the foundation of every website you visit. It's like the
+                        skeleton that gives structure to web pages.</p>
                     <p>In our jungle adventure, we'll learn how to:</p>
                     <ul>
                         <li>Create headings and paragraphs</li>
@@ -571,7 +604,7 @@
                         <span>Live Preview</span>
                     </div>
                 </div>
-                
+
                 <div class="preview">
                     <h3>See Your Page</h3>
                     <div id="preview-output">
@@ -592,8 +625,8 @@
     </div>
 
     <!-- New Footer -->
-    <footer class="site-footer">
-        <p>&copy; 2023 Jungle HTML Adventure. All rights reserved.</p>
+    <footer class="site-footer" id="siteFooter">
+        © 2025 Code Safari. All Rights Reserved.
     </footer>
 
     <script>
@@ -797,22 +830,22 @@
         };
 
         // Initialize the preview
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             runCode();
-            
+
             // Add scroll event for header
             let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const header = document.getElementById('siteHeader');
                 let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
+
                 // Add scrolled class when page is scrolled
                 if (scrollTop > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
-                
+
                 // Hide header on scroll down, show on scroll up
                 if (scrollTop > lastScrollTop && scrollTop > 100) {
                     header.classList.add('hide');
@@ -821,23 +854,23 @@
                 }
                 lastScrollTop = scrollTop;
             });
-            
+
             // Add click event listeners to all sidebar links
             document.querySelectorAll('.sidebar-nav a').forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
+
                     // Remove active class from all links
                     document.querySelectorAll('.sidebar-nav a').forEach(item => {
                         item.classList.remove('active');
                     });
-                    
+
                     // Add active class to clicked link
                     this.classList.add('active');
-                    
+
                     // Get the topic from data attribute
                     const topic = this.getAttribute('data-topic');
-                    
+
                     // Update the topic content
                     updateTopicContent(topic);
                 });
@@ -885,7 +918,7 @@
         function toggleLivePreview() {
             const livePreviewToggle = document.getElementById('live-preview-toggle');
             const htmlTextarea = document.getElementById('html-code');
-            
+
             if (livePreviewToggle.checked) {
                 htmlTextarea.addEventListener('input', runCode);
                 runCode(); // Run once to update
@@ -895,4 +928,5 @@
         }
     </script>
 </body>
+
 </html>
