@@ -30,6 +30,17 @@ body {
   background: none;
   border: none;
   box-shadow: none;
+  transition: top 0.4s ease;
+}
+
+.site-header.hide {
+  top: -100px; /* moves header out of view */
+}
+
+
+.site-header.scrolled {
+  background: #ffffffef;   /* solid white when scrolled */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
 }
 
 .nav-bar {
@@ -37,7 +48,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 60px;
+  padding: 8px 60px; 
 }
 
 .brand {
@@ -47,9 +58,9 @@ body {
   text-decoration: none;
 }
 .brand-mark {
-  width: 190px; height: 90px;
+  width: auto; height: 50px;
   /*border-radius: 20%;*/
-  object-fit: cover;
+  object-fit: contain;
   /*border: 2px solid rgba(0,0,0,.08);
   box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
 }
@@ -566,9 +577,9 @@ body {
     <!-- Navigation links -->
     <ul class="nav-links">
       <li><a href="#welcome">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#welcome">HTML</a></li>
-      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#">HTML</a></li>
+      <li><a href="#welcome">Quiz</a></li>
+      <li><a href="#quiz">About Us</a></li>
     </ul>
   </nav>
 </header>
@@ -678,17 +689,39 @@ body {
 </footer>
 
 <script>
-  // Helper function: keep X centered, only update Y movement
-  function setScrollTransform(el, factor) {
-    el.style.transform = `translateX(-50%) translateY(${window.scrollY * factor}px)`;
+  window.addEventListener("scroll", () => {
+  const header = document.getElementById("siteHeader");
+
+  if (window.scrollY > 50) { // after 50px scroll
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+let hideTimeout;
+let hasTriggered = false; // controls effect
+
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".site-header");
+
+  // If user just left the top and effect hasn't triggered yet
+  if (window.scrollY > 0 && !hasTriggered) {
+    hasTriggered = true; // mark as triggered
+    header.classList.add("hide");
+
+    clearTimeout(hideTimeout);
+
+    hideTimeout = setTimeout(() => {
+      header.classList.remove("hide");
+    }, 1000);
   }
 
-  window.addEventListener("scroll", () => {
-    setScrollTransform(document.querySelector(".sun"), -0.2);
-    setScrollTransform(document.querySelector(".cloud"), -0);
-    setScrollTransform(document.querySelector(".bush"), -0.3);
-    setScrollTransform(document.querySelector(".treewithbush"), -0.1);
-  });
+  // Reset trigger ONLY when back at very top
+  if (window.scrollY === 0) {
+    hasTriggered = false;
+  }
+});
+ 
   window.addEventListener("scroll", () => {
   let scrollY = window.scrollY;
 
