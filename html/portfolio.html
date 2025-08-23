@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - CodeSafari</title>
+  <title>Code Safari</title>
   <style>
+    
     .site-header {
   position: fixed;
   top: 0; left: 0; width: 100%;
@@ -59,7 +60,7 @@
   gap: 50px;
   margin: 0;
   padding: 0;
-  padding-right: 100px; 
+  padding-right: 220px; 
 }
 .nav-links a {
   text-decoration: none;
@@ -70,7 +71,7 @@
 }
 .nav-links a:hover { opacity: 1; }
     body {
-      font-family: 'Comic Neue', cursive;
+      font-family: sans-serif;
       margin: 0;
       padding: 0;
       background: white;
@@ -125,7 +126,7 @@
 
 .bg-above img {
   width: 100%;     /* full width across page */
-  height: auto;    /* keep proportions */
+  height: 360px;    /* keep proportions */
   display: block;
 }
 
@@ -157,8 +158,8 @@
 /* Bird image styling */
 .bird img {
   position:relative;
-  width: 200px;  /* adjust size */
-  height: 300px;
+  width: 140px;  /* adjust size */
+  height: 150px;
   right:250px;
   border-radius: 10px;
 }
@@ -170,12 +171,12 @@
 
 @keyframes flyDiagonal {
   from {
-    right: -100px;   /* start off-screen right */
-    top: 1500px;     /* start lower down */
+    right: -80px;   /* start off-screen right */
+    top: 1000px;     /* start lower down */
   }
   to {
-    right: 30%;      /* stop near center (less forward than 50%) */
-    top: 120%;        /* slightly below center (50% = center, 60% = lower) */
+    right: 20%;      /* stop near center (less forward than 50%) */
+    top: 140%;        /* slightly below center (50% = center, 60% = lower) */
     transform: translate(50%, -50%); /* keep bird truly centered at that point */
   }
 }
@@ -230,22 +231,22 @@
   bottom: -30px;
   left: 0;
   width: 100%;
-  height: 120px; /* adjust height */
-  background: url("../images/grass.png") repeat-x;
+  height: 600px; /* adjust height */
+  background: url("../images/bushess.png") repeat-x;
   background-size: contain;
   z-index: 0; /* behind text */
 }
   .jeep {
   position: absolute;
-  top: 1200px;
+  top: 1100px;
   right: -450px;   /* start off-screen to the right */
-  width: 650px;
+  width: 560px;
   animation: drive 5s linear forwards; /* run once and stop */
   z-index: 2;
 }
 
 @keyframes drive {
-  from { right: -450px; }               /* start off right */
+  from { right: -250px; }               /* start off right */
   to { right: 10%; transform: translateX(10%); } /* stop at center */
 }
 
@@ -257,9 +258,9 @@
 
 .animal{
   position: absolute;
-  top: 150px;    /* adjust to place above road */
-  left: 130px;   /* move to left side */
-  width: 400px;  /* resize */
+  top: 250px;    /* adjust to place above road */
+  left: 100px;   /* move to left side */
+  width: 300px;  /* resize */
   z-index: 1;
 }
 
@@ -275,7 +276,7 @@
   background-color:#6FB531;  
 }
 .portfolio-box {
-  width: 230px;
+  width: 210px;
   height: 280px;
   border-radius: 12px;
   padding: 15px;
@@ -323,7 +324,7 @@
   position: absolute;
   bottom: 0px;   /* push up a bit from bottom */
   left: 0px;     /* stick to left side */
-  width: 100%;     /* half of the image width */
+  width: 95%;     /* half of the image width */
   background: rgba(36, 35, 35, 0.932);
   color: #fff;
   padding: 5px;
@@ -400,7 +401,7 @@
     .site-footer {
   text-align: center;
   padding: 20px 0;
-  font-family: "Baloo 2", system-ui, sans-serif;
+  font-family: Sans-serif;
   font-size: 14px;
   color: #0f172a;
   background: rgb(82, 73, 73);
@@ -414,16 +415,16 @@
   <nav class="nav-bar">
     <!-- Brand: logo + text (aligned left) -->
     <a class="brand" href="#welcome" aria-label="Code Safari Home">
-      <img class="brand-mark" src="images/logo.png" alt="Code Safari logo" />
+      <img class="brand-mark" src="../images/logo.png" alt="Code Safari logo" />
       <span class="brand-text"></span>
     </a>
 
     <!-- Navigation links -->
     <ul class="nav-links">
-      <li><a href="#welcome">Home</a></li>
-      <li><a href="#html">HTML</a></li>
-      <li><a href="#welcome">Quiz</a></li>
-      <li><a href="#quiz">About Us</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../html/map.html">HTML</a></li>
+      <li><a href="../html/quiz.html">Quiz</a></li>
+      <li><a href="../html/portfolio.html">About Us</a></li>
     </ul>
   </nav>
 </header>
@@ -486,7 +487,7 @@
   <div class="portfolio-box">
     <div class="member-card">
       <div class="member" onclick="openModal('modal1')">
-      <img src="images/kiran.jpg" alt="Member Photo">
+      <img src="../images/kiran.jpg" alt="Member Photo">
       <div class="member-name">Kiran</div>
         <div class="member-info">
           <h3>CEO</h3>
@@ -498,7 +499,7 @@
   <div class="portfolio-box">
     <div class="member-card">
       <div class="member" onclick="openModal('modal2')">
-      <img src="images/kesang.jpg" alt="Member Photo">
+      <img src="../images/kesang.jpg" alt="Member Photo">
       <div class="member-name">Kesang</div>
         <div class="member-info">
           <h3>Lead Instructor</h3>
@@ -510,7 +511,7 @@
   <div class="portfolio-box">
     <div class="member-card">
       <div class="member" onclick="openModal('modal3')">
-      <img src="images/aditya.jpg" alt="Member Photo">
+      <img src="../images/aditya.jpg" alt="Member Photo">
       <div class="member-name">Aditya</div>
         <div class="member-info">
           <h3>CAO</h3>

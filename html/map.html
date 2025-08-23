@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adventure Map</title>
+  <title>Code Safari</title>
   <style>
     body {
       margin: 0;
       background: #000;
       overflow-y: scroll;
+      overflow-x: hidden;
+      font-family: sans-serif;
     }
-
+    
     /* Each map section */
     .map-container {
       position: relative;
@@ -130,7 +132,8 @@
                   inset -4px -4px 6px rgba(255,255,255,0.5),
                   inset 4px 4px 10px rgba(0,0,0,0.5);
     }
-    .site-header {
+  
+.site-header {
   position: fixed;
   top: 0; left: 0; width: 100%;
   z-index: 1500;
@@ -184,7 +187,7 @@
   gap: 50px;
   margin: 0;
   padding: 0;
-  padding-right: 100px; 
+  padding-right: 220px; 
 }
 .nav-links a {
   text-decoration: none;
@@ -196,16 +199,6 @@
 .nav-links a:hover { opacity: 1; }
 
 
-.site-footer {
-  text-align: center;
-  padding: 10px 0;
-  font-family: "Baloo 2", system-ui, sans-serif;
-  font-size: 14px;
-  color: #0f172a;
-  background: rgb(82, 73, 73);
-  border: none;
-}
-
     /* Bird flying */
     @keyframes fly {
       0%   { left: -200px; }
@@ -215,92 +208,116 @@
   0% { transform: translateY(20px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
+  .site-footer {
+  text-align: center;
+  padding: 10px 0;
+  font-family: "Baloo 2", system-ui, sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  background: rgb(82, 73, 73);
+  border: none;
+  position: relative;
+  bottom: 0;
+  right: -15px;
+}
 
   </style>
 </head>
 <body>
-
-  <!-- 🔽 FIRST MAP -->
-  <div class="map-container" style="background-image: url('../images/Golden Path at Sunset.png');">
-
-  <!-- Level 10 - Lion -->
-  <div class="level-container" style="top: 86%; left: 42%;">
-    <img class="animal" src="../images/lion.png" alt="lion" style="top:-30px" />
-    <div class="level">10</div>
-  </div>
-
-  <!-- Level 9 - Penguin -->
-  <div class="level-container" style="top: 78%; left: 57%;">
-    <img class="animal" src="../images/penguin.png" alt="penguin" style="top:-10px" />
-    <div class="level">9</div>
-  </div>
-
-  <!-- Level 8 - Monkey -->
-  <div class="level-container" style="top: 70.5%; left: 40%;">
-    <img class="animal" src="../images/monkey.png" alt="monkey" style="top:-7px" />
-    <div class="level">8</div>
-  </div>
-
-  <!-- Level 7 - Giraffe -->
-  <div class="level-container" style="top: 63%; left: 57%;">
-    <img class="animal" src="../images/giraffe.png" alt="giraffe" style="top:-12px" />
-    <div class="level">7</div>
-  </div>
-
-  <!-- Level 6 - Panda -->
-  <div class="level-container" style="top: 50%; left: 54%;">
-    <img class="animal" src="../images/panda.png" alt="panda" style="top:-16px" />
-    <div class="level">6</div>
-  </div>
-
-  <!-- Level 5 - Tiger -->
-  <div class="level-container" style="top: 44%; left: 38%;">
-    <img class="animal" src="../images/tiger.png" alt="tiger" style="top:-12px" />
-    <div class="level">5</div>
-  </div>
-
-  <!-- Level 4 - Kangaroo -->
-  <div class="level-container" style="top: 37%; left: 53%;">
-    <img class="animal" src="../images/kangaroo.png" alt="kangaroo" style="top:-12px" />
-    <div class="level">4</div>
-  </div>
-
-  <!-- Level 3 - Koala -->
-  <div class="level-container" style="top: 30%; left: 38%;">
-    <img class="animal" src="../images/koala.png" alt="koala" style="top:-8px" />
-    <div class="level">3</div>
-  </div>
-
-  <!-- Level 2 - Hippo -->
-  <div class="level-container" style="top: 20%; left: 53%;">
-    <img class="animal" src="../images/hippo.png" alt="elephant" style="top:-12px" />
-    <div class="level">2</div>
-  </div>
-
-  <!-- Level 1 - Deer -->
-  <div class="level-container" style="top: 15.5%; left: 40%;">
-    <img class="animal"src="../images/random.png" alt="deer" style="top:-12px" />
-    <div class="level">1</div>
-  </div>
-
-</div>
-<header class="site-header" id="siteHeader">
+  <header class="site-header" id="siteHeader">
   <nav class="nav-bar">
     <!-- Brand: logo + text (aligned left) -->
     <a class="brand" href="#welcome" aria-label="Code Safari Home">
-      <img class="brand-mark" src="images/logo.png" alt="Code Safari logo" />
+      <img class="brand-mark" src="../images/logo.png" alt="Code Safari logo" />
       <span class="brand-text"></span>
     </a>
 
     <!-- Navigation links -->
     <ul class="nav-links">
-      <li><a href="#welcome">Home</a></li>
-      <li><a href="#html">HTML</a></li>
-      <li><a href="#welcome">Quiz</a></li>
-      <li><a href="#quiz">About Us</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../html/map.html">HTML</a></li>
+      <li><a href="../html/quiz.html">Quiz</a></li>
+      <li><a href="../html/portfolio.html">About Us</a></li>
     </ul>
   </nav>
 </header>
+
+  <!-- 🔽 FIRST MAP -->
+  <div class="map-container" style="background-image: url('../images/Golden Path at Sunset.png');">
+
+  <a href="../html/courses.html">
+  <div class="level-container" style="top: 86%; left: 42%;">
+    <img class="animal" src="../images/lion.png" alt="lion" style="top:-30px" />
+    <div class="level">10</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 9 - Penguin -->
+  <div class="level-container" style="top: 78%; left: 57%;">
+    <img class="animal" src="../images/penguin.png" alt="penguin" style="top:-10px" />
+    <div class="level">9</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+   <!-- Level 8 - Monkey -->
+  <div class="level-container" style="top: 70.5%; left: 40%;">
+    <img class="animal" src="../images/monkey.png" alt="monkey" style="top:-7px" />
+    <div class="level">8</div>
+  </div> 
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 7 - Giraffe -->
+  <div class="level-container" style="top: 63%; left: 57%;">
+    <img class="animal" src="../images/giraffe.png" alt="giraffe" style="top:-12px" />
+    <div class="level">7</div>
+  </div>
+  </a>
+
+  <a href="../html/courses.html">
+    <!-- Level 6 - Panda -->
+  <div class="level-container" style="top: 50%; left: 54%;">
+    <img class="animal" src="../images/panda.png" alt="panda" style="top:-16px" />
+    <div class="level">6</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 5 - Tiger -->
+  <div class="level-container" style="top: 44%; left: 38%;">
+    <img class="animal" src="../images/tiger.png" alt="tiger" style="top:-12px" />
+    <div class="level">5</div>
+  </div>
+  </a>
+
+  <a href="../html/courses.html">
+    <!-- Level 4 - Kangaroo -->
+  <div class="level-container" style="top: 37%; left: 53%;">
+    <img class="animal" src="../images/kangaroo.png" alt="kangaroo" style="top:-12px" />
+    <div class="level">4</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 3 - Koala -->
+  <div class="level-container" style="top: 30%; left: 38%;">
+    <img class="animal" src="../images/koala.png" alt="koala" style="top:-8px" />
+    <div class="level">3</div>
+  </div>
+  </a> 
+  <a href="../html/courses.html">
+    <!-- Level 2 - Hippo -->
+  <div class="level-container" style="top: 20%; left: 53%;">
+    <img class="animal" src="../images/hippo.png" alt="elephant" style="top:-12px" />
+    <div class="level">2</div>
+  </div>
+  </a> 
+  <a href="../html/courses.html">
+    <!-- Level 1 - Deer -->
+  <div class="level-container" style="top: 15.5%; left: 40%;">
+    <img class="animal"src="../images/random.png" alt="deer" style="top:-12px" />
+    <div class="level">1</div>
+  </div>
+  </a> 
+
+</div>
 
 <footer class="site-footer" id="siteFooter">
   © 2025 Code Safari. All Rights Reserved.

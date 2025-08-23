@@ -9,6 +9,9 @@
   --bubble:"Baloo 2", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --quiz-bg-pos:center 50%;
 }
+body {
+  overflow-x: hidden;
+}
 
 *{box-sizing:border-box}
 html,body{height:100%}
