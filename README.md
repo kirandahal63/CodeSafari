@@ -43,3 +43,22 @@ Contributors
 4. Aditya Uprety: Aditya-Uprety
 5. Kritika Pandey: kritika076
 
+Screenshots
+
+Home page
+<img width="1351" height="2839" alt="screencapture-127-0-0-1-5500-index-html-2025-08-24-09_30_47" src="https://github.com/user-attachments/assets/c1b9f45b-c925-4382-8e73-a68aefa20003" />
+
+HTML page
+<img width="1366" height="2074" alt="screencapture-127-0-0-1-5500-html-map-html-2025-08-24-09_34_32" src="https://github.com/user-attachments/assets/4a0e74df-da31-4f63-99ac-1e7d84b0d276" />
+
+Contents page
+
+<img width="1366" height="1165" alt="screencapture-127-0-0-1-5500-html-courses-html-2025-08-24-09_34_55" src="https://github.com/user-attachments/assets/bcd82306-0a56-4497-adce-031884064e69" />
+
+Quiz page
+<img width="1366" height="683" alt="screencapture-127-0-0-1-5500-html-quiz-html-2025-08-24-09_35_29" src="https://github.com/user-attachments/assets/43dbd0e4-8a9d-4b35-8f78-bfa688c31e75" />
+
+About us
+<img width="1366" height="2706" alt="screencapture-127-0-0-1-5500-html-portfolio-html-2025-08-24-09_36_08" src="https://github.com/user-attachments/assets/e90ab961-fa1c-48da-801d-77f21a0da08d" />
+
+
