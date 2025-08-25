@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Safari</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      font-family: sans-serif;
+    }
+    
+    /* Each map section */
+    .map-container {
+      position: relative;
+      width: 100vw;              /* full width */
+      height: calc(100vw * 1.49); /* height based on aspect ratio 1526/1024 */
+      background-image: url('../images/Golden\ Path\ at\ Sunset.png');
+      background-size: 100% 100%; /* stretch perfectly to container */
+      background-repeat: no-repeat;
+      background-position: top center;
+    }
+
+    /* First map zoom effect */
+    .map-container {
+      animation: zoomInOut 18s infinite alternate ease-in-out;
+    }
+
+    @keyframes zoomInOut {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Levels (realistic stone) */
+      /* Stone */
+    .level {
+      position: relative;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f0f0f0 0%, #c8c8c8 50%, #8d8d8d 100%);
+      background-image: 
+        radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px),
+        radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+      background-size: 6px 6px, 10px 10px;
+      background-blend-mode: overlay;
+      border: 2px solid #6b6b6b;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5),
+                  inset -3px -3px 6px rgba(255,255,255,0.4),
+                  inset 3px 3px 8px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 2;
+    }
+
+    .level-container:hover .level {
+      transform: scale(1.5);
+    }
+
+    /* Animal */
+    .animal {
+      position: absolute;
+      bottom: 30px; /* appears above stone */
+      width: 90px;
+      display: none;
+      z-index: 1;
+      pointer-events: none; /* ignore mouse so hover still works */
+    }
+
+    .level-container:hover .animal {
+      display: block;
+      animation: pop 0.3s ease forwards;
+    }
+
+        /* Wrapper for stone + animal */
+    .level-container {
+      position: absolute;
+      width: 70px;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+      /* Realistic stone gradient */
+      background: radial-gradient(circle at 30% 30%, 
+                  #f0f0f0 0%,   /* light highlight */
+                  #c8c8c8 50%,  /* mid tone */
+                  #8d8d8d 100%  /* darker edges */
+                 );
+
+      /* Subtle stone-like texture */
+      background-image: 
+        radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px),
+        radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+      background-size: 6px 6px, 10px 10px;
+      background-blend-mode: overlay;
+
+      /* Depth effect */
+      border: 2px solid #6b6b6b;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5),   /* drop shadow */
+                  inset -3px -3px 6px rgba(255,255,255,0.4), /* highlight */
+                  inset 3px 3px 8px rgba(0,0,0,0.4);         /* inner shadow */
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 20px;
+      font-weight: bold;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .level:hover {
+      transform: scale(1.5);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.6),
+                  inset -4px -4px 6px rgba(255,255,255,0.5),
+                  inset 4px 4px 10px rgba(0,0,0,0.5);
+    }
+  
+.site-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1500;
+  background: none;
+  border: none;
+  box-shadow: none;
+  transition: top 0.4s ease;
+}
+
+.site-header.hide {
+  top: -100px; /* moves header out of view */
+}
+
+
+.site-header.scrolled {
+  background: #ffffffef;   /* solid white when scrolled */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 60px; 
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.brand-mark {
+  width: auto; height: 50px;
+  /*border-radius: 20%;*/
+  object-fit: contain;
+  /*border: 2px solid rgba(0,0,0,.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
+}
+.brand-text {
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #000000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+  padding-right: 220px; 
+}
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #0f172a;
+  opacity: .9;
+  transition: opacity .2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+
+    /* Bird flying */
+    @keyframes fly {
+      0%   { left: -200px; }
+      100% { left: 110%; }
+    }
+    @keyframes pop {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+  .site-footer {
+  text-align: center;
+  padding: 10px 0;
+  font-family: "Baloo 2", system-ui, sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  background: rgb(82, 73, 73);
+  border: none;
+  position: relative;
+  bottom: 0;
+  right: -15px;
+}
+
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+  <nav class="nav-bar">
+    <!-- Brand: logo + text (aligned left) -->
+    <a class="brand" href="#welcome" aria-label="Code Safari Home">
+      <img class="brand-mark" src="../images/logo.png" alt="Code Safari logo" />
+      <span class="brand-text"></span>
+    </a>
+
+    <!-- Navigation links -->
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../html/map.html">HTML</a></li>
+      <li><a href="../html/quiz.html">Quiz</a></li>
+      <li><a href="../html/portfolio.html">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- 🔽 FIRST MAP -->
+  <div class="map-container" style="background-image: url('../images/Golden Path at Sunset.png');">
+
+  <a href="../html/courses.html">
+  <div class="level-container" style="top: 86%; left: 42%;">
+    <img class="animal" src="../images/lion.png" alt="lion" style="top:-30px" />
+    <div class="level">10</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 9 - Penguin -->
+  <div class="level-container" style="top: 78%; left: 57%;">
+    <img class="animal" src="../images/penguin.png" alt="penguin" style="top:-10px" />
+    <div class="level">9</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+   <!-- Level 8 - Monkey -->
+  <div class="level-container" style="top: 70.5%; left: 40%;">
+    <img class="animal" src="../images/monkey.png" alt="monkey" style="top:-7px" />
+    <div class="level">8</div>
+  </div> 
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 7 - Giraffe -->
+  <div class="level-container" style="top: 63%; left: 57%;">
+    <img class="animal" src="../images/giraffe.png" alt="giraffe" style="top:-12px" />
+    <div class="level">7</div>
+  </div>
+  </a>
+
+  <a href="../html/courses.html">
+    <!-- Level 6 - Panda -->
+  <div class="level-container" style="top: 50%; left: 54%;">
+    <img class="animal" src="../images/panda.png" alt="panda" style="top:-16px" />
+    <div class="level">6</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 5 - Tiger -->
+  <div class="level-container" style="top: 44%; left: 38%;">
+    <img class="animal" src="../images/tiger.png" alt="tiger" style="top:-12px" />
+    <div class="level">5</div>
+  </div>
+  </a>
+
+  <a href="../html/courses.html">
+    <!-- Level 4 - Kangaroo -->
+  <div class="level-container" style="top: 37%; left: 53%;">
+    <img class="animal" src="../images/kangaroo.png" alt="kangaroo" style="top:-12px" />
+    <div class="level">4</div>
+  </div>
+  </a>
+  <a href="../html/courses.html">
+    <!-- Level 3 - Koala -->
+  <div class="level-container" style="top: 30%; left: 38%;">
+    <img class="animal" src="../images/koala.png" alt="koala" style="top:-8px" />
+    <div class="level">3</div>
+  </div>
+  </a> 
+  <a href="../html/courses.html">
+    <!-- Level 2 - Hippo -->
+  <div class="level-container" style="top: 20%; left: 53%;">
+    <img class="animal" src="../images/hippo.png" alt="elephant" style="top:-12px" />
+    <div class="level">2</div>
+  </div>
+  </a> 
+  <a href="../html/courses.html">
+    <!-- Level 1 - Deer -->
+  <div class="level-container" style="top: 15.5%; left: 40%;">
+    <img class="animal"src="../images/random.png" alt="deer" style="top:-12px" />
+    <div class="level">1</div>
+  </div>
+  </a> 
+
+</div>
+
+<footer class="site-footer" id="siteFooter">
+  © 2025 Code Safari. All Rights Reserved.
+</footer>
+
+    <!-- Birds -->
+    <img src="../images/5.png" style="position:absolute; width:400px; top:30px; left:-150px; animation:fly 22s linear infinite;" />
+    <img src="../images/5.png" style="position:absolute; width:300px; top:120px; left:-200px; animation:fly 24s linear infinite;" />
+    <img src="../images/5.png" style="position:absolute; width:350px; top:90px; left:-250px; animation:fly 26s linear infinite;" />
+  </div>
+
+</body>
+</html>
