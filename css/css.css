@@ -36,7 +36,6 @@ body{
   top: -100px; /* moves header out of view */
 }
 
-
 .site-header.scrolled {
   background: #ffffffef;   /* solid white when scrolled */
   box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
@@ -58,10 +57,7 @@ body{
 }
 .brand-mark {
   width: auto; height: 50px;
-  /*border-radius: 20%;*/
   object-fit: contain;
-  /*border: 2px solid rgba(0,0,0,.08);
-  box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
 }
 .brand-text {
   font-family: sans-serif;
@@ -234,6 +230,14 @@ body{
 .btn.secondary{ background:#607D8B }
 .btn:active{ transform:translateY(1px) }
 
+/* Make the courses button appear as a block when shown (sits “below” reset) */
+#coursesBtn {
+  display: none;
+}
+
+/* The inline JS will adjust Reset/Courses visibility and margins as needed */
+
+/* Score box */
 .score{ margin-top:12px; font-size:22px; font-weight:bold; color:#1b5e20; display:none; text-align:center; }
 
 /* ===== Certificate ===== */
@@ -291,4 +295,55 @@ body{
   .choice{ font-size:15px }
   .cert-controls input{ min-width:160px; margin-bottom:8px }
   .cert-controls .download{ display:inline-block; margin-top:6px }
+}
+
+/* Make anchor buttons (like Go to Courses) look identical to normal buttons */
+.btn.secondary.same-size {
+  text-decoration: none;        
+  display: inline-flex;         
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;            
+  padding: 10px 16px;           
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.15);
+}
+
+/* ✅ Lock Reset, Go to Courses, and Go Back to the same exact width */
+#resetBtn,
+#coursesBtn,
+#goBackBtn {
+  width: 160px;   /* locked width, adjust as you like */
+  text-align: center;
+}
+/* === Hard-normalize quiz action buttons so they look identical === */
+#resetBtn,
+#coursesBtn,
+#goBackBtn {
+  display: inline-flex;           /* same box model for <button> and <a> */
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 200px;                   /* pick your exact locked width */
+  height: 52px;                   /* lock height to match perfectly */
+  padding: 0 16px;                /* padding for text breathing room */
+  border: none;
+  border-radius: 14px;            /* same rounded corners */
+  text-decoration: none;          /* kill underline on <a> */
+  font: 700 16px/1 "Baloo 2", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; /* same font/weight/size/line-height */
+  background: #607D8B;            /* same background (secondary) */
+  color: #fff;                    /* same text color */
+  box-shadow: 0 6px 14px rgba(0,0,0,.15); /* same shadow */
+}
+
+/* Optional: keep the little press animation consistent */
+#resetBtn:active,
+#coursesBtn:active,
+#goBackBtn:active {
+  transform: translateY(1px);
+}
+/* Nudge Go to Courses button slightly up so it aligns with Reset Quiz */
+#coursesBtn {
+  position: relative;
+  top: -2px;   /* adjust this value (try -2px to -4px) until it aligns perfectly */
 }
