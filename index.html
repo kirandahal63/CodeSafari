@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Code Safari</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
   * {
     margin: 0;
@@ -16,6 +14,7 @@
   html, body {
     height: 100%;
     width: 100%;
+    font-family: "Baloo 2", system-ui, sans-serif;
     
   }
   main {
@@ -67,7 +66,6 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
 }
 .brand-text {
-  font-family: sans-serif;
   font-weight: 900;
   font-size: 20px;
   color: #000000;
@@ -107,7 +105,7 @@ body {
   left: 20%;
   max-width: 450px;
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: "Baloo 2", system-ui, sans-serif;
   z-index: 20;
 }
 
@@ -137,7 +135,7 @@ body {
 }
 
 .cta-btn:hover {
-  background-color: #89a037;
+  background-color: #2c461d;
 }
 
 
@@ -242,7 +240,8 @@ body {
   width: 900px;   /* BIG elephant */
   height: auto;
   z-index: 7;     /* above ground */
-}
+  }
+
 .ground {
   position: absolute;
   top: 1010px;       /* start just above river */
@@ -276,6 +275,7 @@ body {
   width: 728px;  /* match scene width, or set actual grass.png width */
   height: auto;
   z-index: 8;     /* behind elephant */
+  
 }
 .grass1 {
   position: absolute;
@@ -404,27 +404,60 @@ body {
   }
 .diver {
   position: absolute;
-  top: 1850px;   /* adjust vertical position inside ocean */
+  top: 1950px;   /* adjust vertical position inside ocean */
   left: 40px;   /* adjust horizontal position */
   width: 413px;  /* size of the diver */
   height: auto;
   z-index: 7;    /* above ocean, below anything you want in front */
+  animation: swim-v-smooth 20s linear infinite;
 }
-.bubble {
+
+@keyframes swim-v-smooth {
+  0%   { transform: translate(-20vw, -50px) rotate(0deg); }
+  20%  { transform: translate(10vw, 20px) rotate(5deg); }   /* dive down */
+  40%  { transform: translate(25vw, 60px) rotate(10deg); }  /* bottom of V */
+  60%  { transform: translate(50vw, 20px) rotate(5deg); }   /* rise a bit */
+  80%  { transform: translate(75vw, -10px) rotate(-5deg); } /* slight dip */
+  100% { transform: translate(100vw, 0px) rotate(0deg); }   /* exit screen */
+}
+.fish1{
   position: absolute;
-  top: 1950px;   /* adjust vertical position inside ocean */
-  left: 220px;   /* adjust horizontal position */
+  top: 2150px;   /* adjust vertical position inside ocean */
+  right: -50px;   /* adjust horizontal position */
   width: 100px;  /* size of the diver */
   height: auto;
-  z-index: 7;    /* above ocean, below anything you want in front */
+  z-index: 6;    /* above ocean, below anything you want in front */
+ animation: fish-swim 10s linear infinite;
+}
+@keyframes fish-swim {
+  0%   { transform: translate(0px, 50px) rotate(20deg); }   /* start higher */
+  10%  { transform: translate(-80px, 90px) rotate(-5deg); }
+  25%  { transform: translate(-200px, 10px) rotate(4deg); }
+  40%  { transform: translate(-350px, -10px) rotate(-3deg); }
+  55%  { transform: translate(-500px, 35px) rotate(3deg); }
+  70%  { transform: translate(-650px, -12px) rotate(-2deg); }
+  85%  { transform: translate(-800px, 8px) rotate(2deg); }
+  100% { transform: translate(-1000px, 0px) rotate(0deg); } /* exit left */
 }
 .jelly {
   position: absolute;
-  top: 2000px;   /* adjust vertical position inside ocean */
-  right: 30px;   /* adjust horizontal position */
-  width: 500px;  /* size of the diver */
+  top: 2050px;   /* adjust vertical position inside ocean */
+  right: -30px;   /* adjust horizontal position */
+  width: 150px;  /* size of the diver */
   height: auto;
-  z-index: 7;    /* above ocean, below anything you want in front */
+  z-index: 6;    /* above ocean, below anything you want in front */
+ animation: fish-swim 10s linear infinite;
+}
+
+@keyframes fish-swim {
+  0%   { transform: translate(0px, 0px) rotate(0deg); }
+  10%  { transform: translate(-80px, -15px) rotate(-5deg); }
+  25%  { transform: translate(-200px, 10px) rotate(4deg); }
+  40%  { transform: translate(-350px, -10px) rotate(-3deg); }
+  55%  { transform: translate(-500px, 15px) rotate(3deg); }
+  70%  { transform: translate(-650px, -12px) rotate(-2deg); }
+  85%  { transform: translate(-800px, 8px) rotate(2deg); }
+  100% { transform: translate(-1000px, 0px) rotate(0deg); } /* exit left */
 }
 .portfolio-section {
   top: 1700px;
@@ -526,14 +559,14 @@ body {
   position: absolute;
   top: 2320px;   /* adjust vertical position */
   left: 51%;   /* adjust horizontal position */
-  width: 130px;  
+  width: 170px;  
   height: auto;
   z-index: 25;    /* above ocean but below portfolio */
 }
 .coral {
   position: absolute;
   top: 2610px;   /* adjust vertical position */
-  left: 91%;   /* adjust horizontal position */
+  left: 92%;   /* adjust horizontal position */
   width: 80px;  
   height: auto;
   z-index: 25;    /* above ocean but below portfolio */
@@ -559,9 +592,15 @@ body {
   padding: 10px 0;
   font-family: "Baloo 2", system-ui, sans-serif;
   font-size: 14px;
-  color: #0f172a;
-  background: rgb(82, 73, 73);
+  color: #ffffff;
+  background: rgb(12, 14, 124);
   border: none;
+}
+
+.portfolio-box:hover {
+  filter: brightness(0.8); /* darkens the box */
+  cursor: pointer;         /* shows pointer on hover */
+  transition: filter 0.3s ease; /* smooth transition */
 }
 </style>
 </head>
@@ -571,7 +610,7 @@ body {
 <header class="site-header" id="siteHeader">
   <nav class="nav-bar">
     <!-- Brand: logo + text (aligned left) -->
-    <a class="brand" href="#welcome" aria-label="Code Safari Home">
+    <a class="brand" href="index.html" aria-label="Code Safari Home">
       <img class="brand-mark" src="images/logo.png" alt="Code Safari logo" />
       <span class="brand-text"></span>
     </a>
@@ -589,7 +628,10 @@ body {
   <div class="tagline-section">
   <h1>CODE SAFARI</h1>
   <p>Where Learning <br>is a Wild Adventure.</p>
-  <button class="cta-btn">Code with Us</button>
+  <a href="./html/map.html">
+    <button class="cta-btn">Code with Us</button>
+  </a>
+  
   </div>
   <img src="images/sun.png" alt="Sun" class="sun parallax" data-speed="2">
   <img src="images/cloud.png" alt="Cloud" class="cloud parallax" data-speed="5">
@@ -610,7 +652,7 @@ body {
 
 <div class="info-section">
   <div class="info-boxes">
-    <div class="info-box">HTML </div>
+    <a href="./html/map.html" style="text-decoration: none;"><div class="info-box">HTML </div></a>
     <div class="info-box">JavaScript</div>
     <div class="info-box">CSS</div>
     <div class="info-box">Projects</div>
@@ -624,10 +666,10 @@ body {
 <img src="images/wave.png" alt="Wave" class="wave">
 <div class="blue-ocean"></div>
 <img src="images/diver.png" alt="Wave" class="diver">
-<img src="images/bubble.png" alt="Wave" class="bubble">
-<img src="images/jellyfish.png" alt="Wave" class="jelly">
+<img src="images/fish.gif" alt="Wave" class="fish1">
+<img src="images/fish.gif" alt="Wave" class="jelly">
 <img src="images/star.png" alt="Star" class="star">
-<img src="images/octo.png" alt="Star" class="octo">
+<img src="images/octo.gif" alt="Star" class="octo">
 <img src="images/coral.png" alt="Star" class="coral">
 <img src="images/greenweed.png" alt="Star" class="greenweed">
 <img src="images/blueweed.png" alt="Star" class="blueweed">
@@ -650,7 +692,7 @@ body {
       <div class="member-name">Kesang</div>
         <div class="member-info">
           <h3>Lead Instructor</h3>
-          <p>She connects kids with interactive challenges. She makes sure every explorer feels confident and curious while coding.</p>
+          <p>Connects kids with interactive challenges. She makes sure every explorer feels confident and curious while coding.</p>
         </div>
     </div>
   </div>
@@ -660,7 +702,7 @@ body {
       <div class="member-name">Aditya</div>
         <div class="member-info">
           <h3>CAO</h3>
-          <p>He Builds the tools and games behind CodeSafari. He ensures every lesson runs smoothly like an exciting jungle quest.</p>
+          <p>Builds the tools and games behind CodeSafari. He ensures every lesson runs smoothly like an exciting jungle quest.</p>
         </div>
     </div>
   </div>
@@ -670,7 +712,7 @@ body {
       <div class="member-name">Kritika</div>
         <div class="member-info">
           <h3>COO</h3>
-          <p>She makes coding simple and fun for kids. She loves turning complex tags into easy, memorable learning journeys.</p>
+          <p>Makes coding simple and fun for kids. She loves turning complex tags into easy, memorable learning journeys.</p>
         </div>
     </div>
   </div>
@@ -680,7 +722,7 @@ body {
       <div class="member-name">Anwesha</div>
         <div class="member-info">
           <h3>Director</h3>
-          <p>She adds the storytelling magic to CodeSafari. She turns every coding lesson into a thrilling safari tale full of discovery.</p>
+          <p>Adds the storytelling magic to CodeSafari. She turns every coding lesson into a thrilling safari tale full of discovery.</p>
         </div>
     </div>
   </div>
@@ -732,6 +774,7 @@ window.addEventListener("scroll", () => {
   // move diagonally up-left as page scrolls
   boat.style.transform = `translate(-${scrollY * 0.2}px, -${scrollY * 0.1}px)`;
 });
+
 </script>
 
 
