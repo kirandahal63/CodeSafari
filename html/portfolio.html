@@ -134,11 +134,11 @@
     .about {
   padding: 50px;
   background: white;
-  margin-top: 100px;
 }
 
 .about h2 {
-  font-size: 3.3rem;
+  text-align: left;
+  font-size: 2.2rem;
   color: #2e5d34;
   margin-left: 500px;
   margin-bottom: 20px;
@@ -193,7 +193,7 @@
   width: 100vw;       /* force full viewport width */
   height: 600px;
   display: block;
-  margin-top: 100px;
+  margin-top: 0px;
   margin-left: -50px;
   padding: 0;
   z-index: 2;
@@ -238,9 +238,9 @@
 }
   .jeep {
   position: absolute;
-  top: 1100px;
+  top: 940px;
   right: -450px;   /* start off-screen to the right */
-  width: 560px;
+  width: 550px;
   animation: drive 5s linear forwards; /* run once and stop */
   z-index: 2;
 }
@@ -258,9 +258,9 @@
 
 .animal{
   position: absolute;
-  top: 250px;    /* adjust to place above road */
-  left: 100px;   /* move to left side */
-  width: 300px;  /* resize */
+  top: 40px;    /* adjust to place above road */
+  left: 70px;   /* move to left side */
+  width: 400px;  /* resize */
   z-index: 1;
 }
 
@@ -408,13 +408,18 @@
   border: none;
 
 }
+.portfolio-box:hover {
+  filter: brightness(0.8); /* darkens the box */
+  cursor: pointer;         /* shows pointer on hover */
+  transition: filter 0.3s ease; /* smooth transition */
+}
   </style>
 </head>
 <body>
 <header class="site-header" id="siteHeader">
   <nav class="nav-bar">
     <!-- Brand: logo + text (aligned left) -->
-    <a class="brand" href="#welcome" aria-label="Code Safari Home">
+    <a class="brand" href="../index.html" aria-label="Code Safari Home">
       <img class="brand-mark" src="../images/logo.png" alt="Code Safari logo" />
       <span class="brand-text"></span>
     </a>
@@ -422,7 +427,7 @@
     <!-- Navigation links -->
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
-      <li><a href="../html/map.html">HTML</a></li>
+      <li><a href="../html/map.html">Learn HTML</a></li>
       <li><a href="../html/quiz.html">Quiz</a></li>
       <li><a href="../html/portfolio.html">About Us</a></li>
     </ul>
@@ -446,11 +451,12 @@
   <h2>About Us</h2>
   <div class="about-text">
     <p>
+      <br>
       At CodeSafari, we believe learning to code should feel like exploring a jungle full of hidden treasures. 
       Instead of dull lessons, we guide kids through exciting adventures where every tag, every line of code,
       is like discovering a new animal or plant in the wild. 
       Our mission is simple: make HTML learning playful, creative, and unforgettable for curious young explorers.
-    </p>
+      </p>
   </div>
   <div class="bird">
       <img src="../images/bird.png" class="bird" />
