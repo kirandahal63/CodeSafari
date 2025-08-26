@@ -14,22 +14,23 @@
 <body>
 
   <header class="site-header" id="siteHeader">
-  <nav class="nav-bar">
-    <!-- Brand: logo + text (aligned left) -->
-    <a class="brand" href="#welcome" aria-label="Code Safari Home">
-      <img class="brand-mark" src="../images/logo.png" alt="Code Safari logo" />
-      <span class="brand-text"></span>
-    </a>
+    <nav class="nav-bar">
+      <!-- Brand: logo + text (aligned left) -->
+      <a class="brand" href="#welcome" aria-label="Code Safari Home">
+        <img class="brand-mark" src="../images/logo.png" alt="Code Safari logo" />
+        <span class="brand-text"></span>
+      </a>
 
-    <!-- Navigation links -->
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../html/map.html">HTML</a></li>
-      <li><a href="../html/quiz.html">Quiz</a></li>
-      <li><a href="../html/portfolio.html">About Us</a></li>
-    </ul>
-  </nav>
-</header>
+      <!-- Navigation links -->
+      <ul class="nav-links">
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#html">HTML</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <!-- HTML lives in /html, bird is in root → ../ -->
   <img class="bird" id="bird" src="../images/birds-removebg-preview.png" alt="Flying bird" />
 
@@ -128,7 +129,7 @@
 
         <div class="q" data-answer="B">
           <h4>7) Which attribute tells the link where to go?</h4>
-        <div class="choices">
+          <div class="choices">
             <label class="choice"><input type="radio" name="q7" value="A"> src</label>
             <label class="choice"><input type="radio" name="q7" value="B"> href</label>
             <label class="choice"><input type="radio" name="q7" value="C"> alt</label>
@@ -165,6 +166,11 @@
         <div class="quiz-actions">
           <button type="button" class="btn" id="nextBtn">Next Page</button>
           <button type="button" class="btn secondary" id="resetBtn">Reset Quiz</button>
+          <!-- Shown only when score < 6 -->
+          <a href="courses.html" id="coursesBtn" class="btn secondary same-size" style="display:none;">Go to Courses</a>
+
+          <!-- Shown only when certificate is visible (score ≥ 6), goes to Welcome -->
+          <button type="button" class="btn secondary" id="goBackBtn" style="display:none;">Go Back</button>
         </div>
 
         <div class="score" id="scoreBox" aria-live="polite"></div>
@@ -191,8 +197,8 @@
 
   <!-- Footer (WELCOME ONLY) -->
   <footer class="site-footer" id="siteFooter">
-  © 2025 Code Safari. All Rights Reserved.
-</footer>
+    © 2025 Code Safari. All Rights Reserved.
+  </footer>
 
   <!-- html2canvas -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
